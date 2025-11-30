@@ -30,8 +30,8 @@ Before you begin, make sure you have:
 ### Step 1: Clone the Repository
 
 ```bash
-git clone <repository-url>
-cd full-admin-v1
+git clone https://github.com/mahmoudmatter12/Next-Admin-Kit.git
+cd Next-Admin-Kit
 ```
 
 ### Step 2: Install Dependencies
@@ -58,7 +58,6 @@ Create a `.env` file in the root directory with the following variables:
 ### Required Variables
 
 #### Database
-
 ```env
 DATABASE_URL="postgresql://user:password@localhost:5432/dbname"
 ```
@@ -66,14 +65,12 @@ DATABASE_URL="postgresql://user:password@localhost:5432/dbname"
 **Format**: `postgresql://[username]:[password]@[host]:[port]/[database]`
 
 #### Clerk Authentication
-
 ```env
 NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY="pk_test_your_publishable_key_here"
 CLERK_SECRET_KEY="sk_test_your_secret_key_here"
 ```
 
 **How to get Clerk keys:**
-
 1. Visit [Clerk Dashboard](https://dashboard.clerk.com)
 2. Create a new application (or use existing)
 3. Go to **API Keys** section
@@ -171,19 +168,19 @@ The application will be available at `http://localhost:3000`
 #### Option B: Using SQL
 
 ```sql
-UPDATE "user"
-SET role = 'ADMIN'
+UPDATE "user" 
+SET role = 'ADMIN' 
 WHERE email = 'your-email@example.com';
 ```
 
 #### Option C: Using Prisma Client (in code)
 
 ```typescript
-import { db } from "@/lib/db";
+import { db } from '@/lib/db';
 
 await db.user.update({
-  where: { email: "your-email@example.com" },
-  data: { role: "ADMIN" },
+  where: { email: 'your-email@example.com' },
+  data: { role: 'ADMIN' }
 });
 ```
 
@@ -231,7 +228,6 @@ npm run cleanup:landing
 ```
 
 **What this does:**
-
 - Moves all landing page components to `.trash/` directory
 - Moves setup guide to `.trash/`
 - Moves documentation viewer to `.trash/`
@@ -256,7 +252,6 @@ npm run build:deploy       # Build + database push
 **Error**: `Can't reach database server`
 
 **Solutions**:
-
 - Verify PostgreSQL is running
 - Check `DATABASE_URL` format
 - Ensure database exists
@@ -267,7 +262,6 @@ npm run build:deploy       # Build + database push
 **Error**: `Invalid Clerk keys`
 
 **Solutions**:
-
 - Verify keys are copied correctly (no extra spaces)
 - Check if keys are from the correct environment (test vs production)
 - Ensure `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` starts with `pk_`
@@ -278,7 +272,6 @@ npm run build:deploy       # Build + database push
 **Error**: `PrismaClient is not generated`
 
 **Solution**:
-
 ```bash
 npm run db:generate
 ```
@@ -288,7 +281,6 @@ npm run db:generate
 **Issue**: Changed role in database but still can't access admin
 
 **Solutions**:
-
 - Log out and log back in
 - Clear browser cache
 - Check if user context is refetching (try "Recheck Admin Access" button)
@@ -299,7 +291,6 @@ npm run db:generate
 **Error**: `Port 3000 is already in use`
 
 **Solution**:
-
 ```bash
 # Use a different port
 PORT=3001 npm run dev
@@ -310,7 +301,6 @@ PORT=3001 npm run dev
 **Error**: Type errors after installation
 
 **Solution**:
-
 ```bash
 npm run type-check
 # Fix any errors, then:
@@ -348,3 +338,4 @@ npm run db:generate
 ---
 
 **Happy Coding! 🎉**
+
