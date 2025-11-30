@@ -1,0 +1,229 @@
+{
+  "navigation": {
+    "home": "الرئيسية",
+    "about": "عن الجامعة",
+    "services": "الخدمات",
+    "faculties_and_programs": "الكليات والبرامج",
+    "media": "وسائل الإعلام",
+    "FAQ": "الأسئلة الشائعة",
+    "contact": "تواصل معنا"
+  },
+  "header": {
+    "date": "السبت - الخميس: 8 صباحًا - 6 مساءً",
+    "menu": "القائمة",
+    "language": "اللغة",
+    "university_name": "جامعة حلوان الاهلية",
+    "FOLLOW US": "تابعنا",
+    "University's president": "رئيس الجامعة",
+    "About the university": "عن الجامعة",
+    "Business": "كلية العلوم الإنسانية والتجارة وإدارة الأعمال",
+    "Law": "كلية القانون (برنامج اللغة العربية)",
+    "Engineering": "كلية الهندسة",
+    "Computer Science & information technology": "كلية علوم الحاسب وتكنولوجيا المعلومات",
+    "Science": "كلية العلوم",
+    "Medicine": "كلية الطب",
+    "Dentistry": "كلية طب الأسنان",
+    "Applied Health Sciences Technology": "كلية تكنولوجيا العلوم الصحية التطبيقية",
+    "university_name_mobile": "جامعة حلوان الاهلية",
+    "Faculty of Physical Therapy": "كلية العلاج الطبيعي",
+    "Faculty of Arts & Applied Arts": "كلية الفنون والفنون التطبيقية",
+    "view_documentation": "عرض التوثيق"
+  },
+  "hero": {
+    "discover_all_programs": "اكتشف جميع البرامج",
+    "learn_more": "المزيد",
+    "view_blog": "عرض المدونة",
+    "view_event": "عرض الحدث",
+    "read_more": "اقرأ المزيد"
+  },
+  "programs": {
+    "learn_more": "المزيد"
+  },
+  "colleges": {
+    "title": "كلياتنا",
+    "subtitle": "استكشف مجموعتنا المتنوعة من الكليات التي تقدم تعليمًا وفرص بحثية على مستوى عالمي",
+    "colleges_count": "كلية متاحة",
+    "search_placeholder": "البحث عن الكليات...",
+    "sort_by": "ترتيب حسب",
+    "sort_by_name": "الاسم",
+    "sort_by_students": "عدد الطلاب",
+    "sort_by_programs": "عدد البرامج",
+    "no_colleges_found": "لم يتم العثور على كليات",
+    "no_colleges_description": "لم نتمكن من العثور على أي كليات تطابق معايير البحث الخاصة بك. حاول تعديل المرشحات.",
+    "showing_results": "عرض {count} من {total} كلية",
+    "loading": "جاري تحميل الكليات...",
+    "error": "خطأ في تحميل الكليات"
+  },
+  "expand": {
+    "About-this": " عن هذا",
+    "Featured": "مميز",
+    "activity": "نشاط",
+    "news": "أخبار",
+    "event": "حدث",
+    "register-now": "سجل الآن",
+    "read-more": "اقرأ المزيد",
+    "join-now": "انضم الآن",
+    "learn-more": "المزيد"
+  },
+  "footer": {
+    "Our_Location": "موقعنا",
+    "Quick_Links": "روابط سريعة",
+    "Quick_Actions": "إجراءات سريعة",
+    "Apply_Now": "قدم الآن",
+    "Schedule_a_Visit": "حدد موعدًا للزيارة",
+    "Request_Information": "طلب معلومات",
+    "university_name": "جامعة حلوان الاهلية",
+    "rights_reserved": "جميع الحقوق محفوظة.",
+    "date": "٢٠٢٥",
+    "Total_Visitors": "إجمالي الزوار",
+    "Unique_Visitors": "زوار فريدون",
+    "Today": "اليوم",
+    "visitors": "زائر",
+    "Devices": "الاجهزة",
+    "Top_Country": "الدول المتصدرة"
+  },
+  "landing": {
+    "hero": {
+      "title": "Full Admin V1",
+      "subtitle": "نقطة البداية الكاملة لوحة الإدارة",
+      "description": "مبني بـ Next.js 16، Prisma، Clerk، RBAC، الثيمات و i18n - كل ما تحتاجه لبناء لوحة إدارة جاهزة للإنتاج",
+      "get_started": "ابدأ الآن",
+      "view_docs": "عرض التوثيق",
+      "github": "جيثب",
+      "scroll_to_setup": "انتقل إلى دليل الإعداد",
+      "view_documentation": "عرض جميع التوثيقات"
+    },
+    "features": {
+      "title": "كل ما تحتاجه",
+      "subtitle": "قالب بداية كامل مع جميع الميزات الأساسية",
+      "authentication": {
+        "title": "المصادقة مع Clerk",
+        "description": "مصادقة آمنة مع تكامل Clerk، يدعم البريد الإلكتروني/كلمة المرور وتسجيل الدخول الاجتماعي"
+      },
+      "rbac": {
+        "title": "التحكم في الوصول القائم على الأدوار",
+        "description": "أربعة أدوار (GUEST، ADMIN، SUPERADMIN، OWNER) مع أذونات دقيقة"
+      },
+      "themes": {
+        "title": "نظام الثيمات",
+        "description": "ثيمات متعددة (فاتح، داكن، مخصص) مع منتقي الألوان وتفضيلات دائمة"
+      },
+      "i18n": {
+        "title": "التدويل",
+        "description": "دعم الإنجليزية والعربية مع تخطيط RTL وإدارة ترجمة سهلة"
+      },
+      "database": {
+        "title": "Prisma + PostgreSQL",
+        "description": "وصول آمن للقاعدة البيانات مع Prisma ORM ومحول PostgreSQL"
+      },
+      "ui": {
+        "title": "واجهة مستخدم حديثة",
+        "description": "مكونات جميلة مع shadcn/ui، Tailwind CSS، ورسوم متحركة Framer Motion"
+      },
+      "typescript": {
+        "title": "TypeScript",
+        "description": "أمان كامل للأنواع في جميع أنحاء التطبيق"
+      },
+      "configurable": {
+        "title": "قابل للتخصيص بدرجة عالية",
+        "description": "ملفات تكوين سهلة للتنقل، الثيمات، لوحة المعلومات، والمزيد"
+      }
+    },
+    "quick_start": {
+      "title": "بداية سريعة",
+      "subtitle": "ابدأ العمل في دقائق",
+      "step1": {
+        "title": "تثبيت التبعيات",
+        "description": "npm install"
+      },
+      "step2": {
+        "title": "تكوين البيئة",
+        "description": "إعداد ملف .env بمفاتيحك"
+      },
+      "step3": {
+        "title": "إعداد قاعدة البيانات",
+        "description": "تشغيل ترحيلات Prisma"
+      },
+      "step4": {
+        "title": "بدء التطوير",
+        "description": "npm run dev"
+      },
+      "view_full_guide": "عرض دليل الإعداد الكامل"
+    },
+    "tech_stack": {
+      "title": "مبني بتقنيات حديثة",
+      "subtitle": "مدعوم بأفضل الأدوات في النظام البيئي"
+    },
+    "showcase": {
+      "title": "شاهدها في العمل",
+      "subtitle": "استكشف واجهة المستخدم الجميلة والميزات القوية"
+    },
+    "setup_guide": {
+      "title": "دليل الإعداد",
+      "subtitle": "اتبع هذه الخطوات للبدء",
+      "prerequisites": {
+        "title": "المتطلبات الأساسية",
+        "nodejs": "Node.js 18+ و npm",
+        "postgresql": "قاعدة بيانات PostgreSQL",
+        "clerk": "حساب Clerk (النسخة المجانية متاحة)",
+        "git": "Git (للنسخ)"
+      },
+      "installation": {
+        "title": "التثبيت",
+        "step1": "استنساخ المستودع",
+        "step2": "تثبيت التبعيات",
+        "step3": "نسخ .env.example إلى .env"
+      },
+      "environment": {
+        "title": "متغيرات البيئة",
+        "description": "قم بتكوين ملف .env الخاص بك باستخدام المتغيرات التالية:",
+        "database_url": "سلسلة اتصال PostgreSQL",
+        "clerk_keys": "مفاتيح Clerk القابلة للنشر والسرية",
+        "optional": "اختياري: رابط API، اسم التطبيق، إلخ"
+      },
+      "database": {
+        "title": "إعداد قاعدة البيانات",
+        "step1": "إنشاء Prisma Client",
+        "step2": "دفع المخطط إلى قاعدة البيانات",
+        "step3": "التحقق من الاتصال"
+      },
+      "first_login": {
+        "title": "تسجيل الدخول الأول",
+        "step1": "بدء خادم التطوير",
+        "step2": "زيارة /login والتسجيل",
+        "step3": "تحديث دورك في قاعدة البيانات إلى ADMIN أو OWNER",
+        "step4": "الوصول إلى لوحة الإدارة في /admin"
+      },
+      "cleanup": {
+        "title": "تنظيف صفحة الهبوط",
+        "subtitle": "إزالة صفحة الهبوط والتوثيق بعد الإعداد",
+        "card_title": "إزالة صفحة الهبوط والتوثيق",
+        "card_description": "بعد الانتهاء من إعداد مشروعك وقراءة جميع التوثيق، يمكنك إزالة صفحة الهبوط ودليل الإعداد وعارض التوثيق لبدء بناء تطبيقك.",
+        "what_removes_title": "سيتم إزالة:",
+        "removes_landing": "مكونات وأقسام صفحة الهبوط",
+        "removes_setup": "صفحة دليل الإعداد",
+        "removes_docs": "عارض التوثيق",
+        "removes_images": "جميع الصور من مجلد public (لقطات الشاشة، إلخ)",
+        "command_title": "قم بتشغيل هذا الأمر:",
+        "warning_title": "مهم",
+        "warning_description": "يتم نقل الملفات إلى مجلد .trash/ (وليس حذفها) حتى تتمكن من استعادتها إذا لزم الأمر. يمكنك حذف مجلد .trash/ لاحقًا إذا لم تكن بحاجة إلى تلك الملفات.",
+        "after_cleanup_title": "بعد التنظيف:",
+        "after_cleanup_description": "سيتم استبدال صفحتك الرئيسية برسالة بسيطة:"
+      }
+    },
+    "cta": {
+      "get_started": "ابدأ الآن",
+      "view_github": "عرض على جيثب",
+      "read_docs": "قراءة التوثيق"
+    },
+    "docs": {
+      "title": "التوثيق",
+      "subtitle": "تصفح جميع التوثيق المتاح",
+      "documents": "المستندات",
+      "loading": "جاري تحميل المستند...",
+      "error": "خطأ في تحميل المستند",
+      "select_doc": "اختر مستندًا للعرض",
+      "no_content": "لا يوجد محتوى متاح"
+    }
+  }
+}

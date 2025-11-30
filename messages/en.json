@@ -1,0 +1,229 @@
+{
+  "navigation": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "faculties_and_programs": "Faculties & Programs",
+    "media": "Media",
+    "FAQ": "FAQ",
+    "contact": "Contact Us"
+  },
+  "header": {
+    "date": "Sat - Thu: 8 AM - 6 PM",
+    "menu": "Menu",
+    "language": "Language",
+    "university_name": "HELWAN NATIONAL UNIVERSITY",
+    "FOLLOW US": "FOLLOW US",
+    "University's president": "University's president",
+    "About the university": "About the university",
+    "Business": "Faculty of Humanities, Commerce, and Business Administration",
+    "Law": "Faculty of Law (Arabic Program)",
+    "Engineering": "Faculty of Engineering",
+    "Computer Science & information technology": "Faculty of Computer Science & Information Technology",
+    "Science": "Faculty of Science",
+    "Medicine": "Faculty of Medicine",
+    "Dentistry": "Faculty of Dentistry",
+    "Applied Health Sciences Technology": "Faculty of Applied Health Sciences Technology",
+    "university_name_mobile": "HELWAN NATIONAL UNIVERSITY",
+    "Faculty of Physical Therapy": "Faculty of Physical Therapy",
+    "Faculty of Arts & Applied Arts": "Faculty of Arts & Applied Arts",
+    "view_documentation": "View Documentation"
+  },
+  "hero": {
+    "discover_all_programs": "Discover All Programs",
+    "learn_more": "Learn More",
+    "view_blog": "View Blog",
+    "view_event": "View Event",
+    "read_more": "Read More"
+  },
+  "programs": {
+    "learn_more": "Learn More"
+  },
+  "colleges": {
+    "title": "Our Colleges",
+    "subtitle": "Explore our diverse range of colleges offering world-class education and research opportunities",
+    "colleges_count": "colleges available",
+    "search_placeholder": "Search for colleges...",
+    "sort_by": "Sort by",
+    "sort_by_name": "Name",
+    "sort_by_students": "Number of Students",
+    "sort_by_programs": "Number of Programs",
+    "no_colleges_found": "No Colleges Found",
+    "no_colleges_description": "We couldn't find any colleges matching your search criteria. Try adjusting your filters.",
+    "showing_results": "Showing {count} of {total} colleges",
+    "loading": "Loading colleges...",
+    "error": "Error loading colleges"
+  },
+  "expand": {
+    "About-this": "About this",
+    "Featured": "Featured",
+    "activity": "Activity",
+    "news": "News",
+    "event": "Event",
+    "register-now": "Register Now",
+    "read-more": "Read More",
+    "join-now": "Join Now",
+    "learn-more": "Learn More"
+  },
+  "footer": {
+    "Our_Location": "Our Location",
+    "Quick_Links": "Quick Links",
+    "Quick_Actions": "Quick Actions",
+    "Apply_Now": "Apply Now",
+    "Schedule_a_Visit": "Schedule a Visit",
+    "Request_Information": "Request Information",
+    "university_name": "HELWAN NATIONAL UNIVERSITY",
+    "rights_reserved": "All rights reserved.",
+    "date": "2025",
+    "Total_Visitors": "Total Visitors",
+    "Unique_Visitors": "Unique Visitors",
+    "Today": "Today",
+    "visitors": "visitors",
+    "Devices": "Devices",
+    "Top_Country": "Top Country"
+  },
+  "landing": {
+    "hero": {
+      "title": "Full Admin V1",
+      "subtitle": "Your Complete Admin Panel Starter",
+      "description": "Built with Next.js 16, Prisma, Clerk, RBAC, Themes & i18n - Everything you need to build a production-ready admin panel",
+      "get_started": "Get Started",
+      "view_docs": "View Documentation",
+      "github": "GitHub",
+      "scroll_to_setup": "Scroll to Setup Guide",
+      "view_documentation": "View All features documentation"
+    },
+    "features": {
+      "title": "Everything You Need",
+      "subtitle": "A complete starter template with all the essential features",
+      "authentication": {
+        "title": "Clerk Authentication",
+        "description": "Secure authentication with Clerk integration, supporting email/password and social login"
+      },
+      "rbac": {
+        "title": "Role-Based Access Control",
+        "description": "Four roles (GUEST, ADMIN, SUPERADMIN, OWNER) with granular permissions"
+      },
+      "themes": {
+        "title": "Theme System",
+        "description": "Multiple themes (Light, Dark, Custom) with color picker and persistent preferences"
+      },
+      "i18n": {
+        "title": "Internationalization",
+        "description": "English & Arabic support with RTL layout and easy translation management"
+      },
+      "database": {
+        "title": "Prisma + PostgreSQL",
+        "description": "Type-safe database access with Prisma ORM and PostgreSQL adapter"
+      },
+      "ui": {
+        "title": "Modern UI",
+        "description": "Beautiful components with shadcn/ui, Tailwind CSS, and Framer Motion animations"
+      },
+      "typescript": {
+        "title": "TypeScript",
+        "description": "Full type safety across the entire application"
+      },
+      "configurable": {
+        "title": "Highly Configurable",
+        "description": "Easy configuration files for navigation, themes, dashboard, and more"
+      }
+    },
+    "quick_start": {
+      "title": "Quick Start",
+      "subtitle": "Get up and running in minutes",
+      "step1": {
+        "title": "Install Dependencies",
+        "description": "npm install"
+      },
+      "step2": {
+        "title": "Configure Environment",
+        "description": "Set up .env file with your keys"
+      },
+      "step3": {
+        "title": "Setup Database",
+        "description": "Run Prisma migrations"
+      },
+      "step4": {
+        "title": "Start Development",
+        "description": "npm run dev"
+      },
+      "view_full_guide": "View Full Setup Guide"
+    },
+    "tech_stack": {
+      "title": "Built With Modern Technologies",
+      "subtitle": "Powered by the best tools in the ecosystem"
+    },
+    "showcase": {
+      "title": "See It In Action",
+      "subtitle": "Explore the beautiful UI and powerful features"
+    },
+    "setup_guide": {
+      "title": "Setup Guide",
+      "subtitle": "Follow these steps to get started",
+      "prerequisites": {
+        "title": "Prerequisites",
+        "nodejs": "Node.js 18+ and npm",
+        "postgresql": "PostgreSQL database",
+        "clerk": "Clerk account (free tier available)",
+        "git": "Git (for cloning)"
+      },
+      "installation": {
+        "title": "Installation",
+        "step1": "Clone the repository",
+        "step2": "Install dependencies",
+        "step3": "Copy .env.example to .env"
+      },
+      "environment": {
+        "title": "Environment Variables",
+        "description": "Configure your .env file with the following variables:",
+        "database_url": "PostgreSQL connection string",
+        "clerk_keys": "Clerk publishable and secret keys",
+        "optional": "Optional: API URL, app name, etc."
+      },
+      "database": {
+        "title": "Database Setup",
+        "step1": "Generate Prisma Client",
+        "step2": "Push schema to database",
+        "step3": "Verify connection"
+      },
+      "first_login": {
+        "title": "First Login",
+        "step1": "Start development server",
+        "step2": "Visit /login and sign up",
+        "step3": "Update your role in database to ADMIN or OWNER",
+        "step4": "Access admin panel at /admin"
+      },
+      "cleanup": {
+        "title": "Cleanup Landing Page",
+        "subtitle": "Remove the landing page and documentation after setup",
+        "card_title": "Remove Landing Page & Documentation",
+        "card_description": "Once you've finished setting up your project and read all the documentation, you can remove the landing page, setup guide, and documentation viewer to start building your app.",
+        "what_removes_title": "This will remove:",
+        "removes_landing": "Landing page components and sections",
+        "removes_setup": "Setup guide page",
+        "removes_docs": "Documentation viewer",
+        "removes_images": "All public folder images (screenshots, etc.)",
+        "command_title": "Run this command:",
+        "warning_title": "Important",
+        "warning_description": "Files are moved to .trash/ directory (not deleted) so you can recover them if needed. You can delete the .trash/ folder later if you don't need those files.",
+        "after_cleanup_title": "After cleanup:",
+        "after_cleanup_description": "Your root page will be replaced with a simple message:"
+      }
+    },
+    "cta": {
+      "get_started": "Get Started Now",
+      "view_github": "View on GitHub",
+      "read_docs": "Read Documentation"
+    },
+    "docs": {
+      "title": "Documentation",
+      "subtitle": "Browse through all available documentation",
+      "documents": "Documents",
+      "loading": "Loading document...",
+      "error": "Error loading document",
+      "select_doc": "Select a document to view",
+      "no_content": "No content available"
+    }
+  }
+}
