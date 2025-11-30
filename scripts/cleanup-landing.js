@@ -90,10 +90,10 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://adminkit.vercel.app';
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://next-admin-kit-nine.vercel.app';
 
   return generateSEOMetadata({
-    title: process.env.NEXT_PUBLIC_PROJECT_NAME || 'AdminKit',
+    title: process.env.NEXT_PUBLIC_PROJECT_NAME || 'next-admin-kit-nine',
     description:
       process.env.NEXT_PUBLIC_PROJECT_DESCRIPTION ||
       'Your admin panel application',

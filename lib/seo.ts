@@ -40,8 +40,8 @@ export function generateMetadata(config: SEOConfig): Metadata {
     tags = [],
   } = config;
 
-  const siteName = process.env.NEXT_PUBLIC_PROJECT_NAME || 'AdminKit';
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://adminkit.dev';
+  const siteName = process.env.NEXT_PUBLIC_PROJECT_NAME || 'next-admin-kit-nine';
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://next-admin-kit-nine.dev';
   const defaultImage = `${siteUrl}/og-image.png`;
   const fullUrl = url ? `${siteUrl}${url}` : siteUrl;
   const fullImage = image
@@ -133,11 +133,11 @@ export function generateMetadata(config: SEOConfig): Metadata {
  */
 export function generateStructuredData(config: {
   type:
-    | 'WebSite'
-    | 'WebPage'
-    | 'Article'
-    | 'SoftwareApplication'
-    | 'Organization';
+  | 'WebSite'
+  | 'WebPage'
+  | 'Article'
+  | 'SoftwareApplication'
+  | 'Organization';
   name: string;
   description: string;
   url: string;
@@ -164,7 +164,7 @@ export function generateStructuredData(config: {
     reviewCount: string;
   };
 }) {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://adminkit.dev';
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://next-admin-kit-nine.dev';
   const defaultImage = `${siteUrl}/og-image.png`;
   const defaultLogo = `${siteUrl}/logo.png`;
 
@@ -251,7 +251,7 @@ export function generateStructuredData(config: {
  * Default SEO configuration
  */
 export const defaultSEO: SEOConfig = {
-  title: process.env.NEXT_PUBLIC_PROJECT_NAME || 'AdminKit',
+  title: process.env.NEXT_PUBLIC_PROJECT_NAME || 'next-admin-kit-nine',
   description:
     process.env.NEXT_PUBLIC_PROJECT_DESCRIPTION ||
     'Full-stack admin panel starter with Next.js, Prisma, Clerk, RBAC, Themes & i18n',

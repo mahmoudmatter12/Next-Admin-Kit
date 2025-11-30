@@ -3,7 +3,7 @@ import { routing } from '@/i18n/routing';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const siteUrl =
-    process.env.NEXT_PUBLIC_SITE_URL || 'https://adminkit.vercel.app';
+    process.env.NEXT_PUBLIC_SITE_URL || 'https://next-admin-kit-nine.vercel.app';
 
   // Base routes that exist in all locales
   const baseRoutes = [

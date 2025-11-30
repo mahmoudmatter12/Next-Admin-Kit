@@ -16,12 +16,12 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://adminkit.dev';
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://next-admin-kit-nine.dev';
 
   return generateSEOMetadata({
-    title: 'Setup Guide - AdminKit',
+    title: 'Setup Guide - next-admin-kit-nine',
     description:
-      'Complete setup guide for AdminKit. Learn how to install, configure, and deploy your admin panel with Next.js, Prisma, Clerk, and PostgreSQL.',
+      'Complete setup guide for next-admin-kit-nine. Learn how to install, configure, and deploy your admin panel with Next.js, Prisma, Clerk, and PostgreSQL.',
     keywords: [
       'admin panel setup',
       'next.js setup',
@@ -52,22 +52,22 @@ export default async function SetupPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://adminkit.dev';
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://next-admin-kit-nine.dev';
 
   const structuredData = generateStructuredData({
     type: 'Article',
-    name: 'AdminKit Setup Guide',
+    name: 'next-admin-kit-nine Setup Guide',
     description:
-      'Complete setup guide for AdminKit admin panel starter template',
+      'Complete setup guide for next-admin-kit-nine admin panel starter template',
     url: `${siteUrl}/${locale}/setup`,
     image: `${siteUrl}/og-image.png`,
     datePublished: '2024-01-01',
     dateModified: new Date().toISOString(),
     author: {
-      name: 'AdminKit Team',
+      name: 'next-admin-kit-nine Team',
     },
     publisher: {
-      name: 'AdminKit',
+      name: 'next-admin-kit-nine',
       logo: `${siteUrl}/logo.png`,
     },
   });
@@ -87,7 +87,7 @@ export default async function SetupPage({
                 Setup Guide
               </h1>
               <p className='text-xl text-setup-text/70 mb-8'>
-                Follow these steps to get your AdminKit admin panel up and
+                Follow these steps to get your next-admin-kit-nine admin panel up and
                 running.
               </p>
 

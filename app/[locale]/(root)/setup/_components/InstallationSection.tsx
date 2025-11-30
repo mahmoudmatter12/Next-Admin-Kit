@@ -10,7 +10,7 @@ const commands = [
   {
     label: 'Clone the repository',
     command:
-      'git clone https://github.com/mahmoudmatter12/Next-Admin-Kit.git\ncd Next-Admin-Kit',
+      'git clone https://github.com/mahmoudmatter12/next-admin-kit-nine.git\ncd next-admin-kit-nine',
   },
   {
     label: 'Install dependencies',

@@ -15,10 +15,10 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://adminkit.dev';
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://next-admin-kit-nine.dev';
 
   return generateSEOMetadata({
-    title: 'AdminKit - Full-Stack Admin Panel Starter',
+    title: 'next-admin-kit-nine - Full-Stack Admin Panel Starter',
     description:
       'Build production-ready admin panels with Next.js 16, Prisma, Clerk, RBAC, Themes & i18n. Complete starter template with authentication, role-based access control, and modern UI.',
     keywords: [
@@ -54,11 +54,11 @@ export default async function HomePage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://adminkit.dev';
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://next-admin-kit-nine.dev';
 
   const structuredData = generateStructuredData({
     type: 'SoftwareApplication',
-    name: 'AdminKit',
+    name: 'next-admin-kit-nine',
     description:
       'Full-stack admin panel starter with Next.js, Prisma, Clerk, RBAC, Themes & i18n',
     url: `${siteUrl}/${locale}`,

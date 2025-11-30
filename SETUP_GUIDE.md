@@ -30,8 +30,8 @@ Before you begin, make sure you have:
 ### Step 1: Clone the Repository
 
 ```bash
-git clone https://github.com/mahmoudmatter12/Next-Admin-Kit.git
-cd Next-Admin-Kit
+git clone https://github.com/mahmoudmatter12/next-admin-kit-nine.git
+cd next-admin-kit-nine
 ```
 
 ### Step 2: Install Dependencies

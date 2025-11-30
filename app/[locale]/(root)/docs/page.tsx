@@ -10,9 +10,9 @@ export async function generateMetadata({
   const { locale } = await params;
 
   return generateSEOMetadata({
-    title: 'Documentation - AdminKit',
+    title: 'Documentation - next-admin-kit-nine',
     description:
-      'Complete documentation for AdminKit. Learn about features, configuration, API, authentication, themes, and more.',
+      'Complete documentation for next-admin-kit-nine. Learn about features, configuration, API, authentication, themes, and more.',
     keywords: [
       'admin panel documentation',
       'admin kit docs',
