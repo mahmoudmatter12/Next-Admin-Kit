@@ -1,9 +1,9 @@
-import { db } from "@/lib/db";
-import { NextRequest, NextResponse } from "next/server";
+import { db } from '@/lib/db';
+import { NextRequest, NextResponse } from 'next/server';
 
 async function handleGET(
   request: NextRequest,
-  { params }: { params: Promise<{ clerkId: string }> },
+  { params }: { params: Promise<{ clerkId: string }> }
 ) {
   try {
     const { clerkId } = await params;
@@ -12,15 +12,15 @@ async function handleGET(
     });
 
     if (!user) {
-      return NextResponse.json({ error: "User not found" }, { status: 404 });
+      return NextResponse.json({ error: 'User not found' }, { status: 404 });
     }
 
     return NextResponse.json(user);
   } catch (error) {
-    console.error("Error fetching user by clerk ID:", error);
+    console.error('Error fetching user by clerk ID:', error);
     return NextResponse.json(
-      { error: "Failed to fetch user" },
-      { status: 500 },
+      { error: 'Failed to fetch user' },
+      { status: 500 }
     );
   }
 }

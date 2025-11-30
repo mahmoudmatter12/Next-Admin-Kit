@@ -1,11 +1,11 @@
-import { NextRequest, NextResponse } from "next/server";
-import { db } from "@/lib/db";
-import { UserType } from "@prisma/client";
-import { getCurrentUserInfo } from "@/lib/auth-utils";
+import { NextRequest, NextResponse } from 'next/server';
+import { db } from '@/lib/db';
+import { UserType } from '@prisma/client';
+import { getCurrentUserInfo } from '@/lib/auth-utils';
 
 async function handlePATCH(
   request: NextRequest,
-  { params }: { params: Promise<{ id: string }> },
+  { params }: { params: Promise<{ id: string }> }
 ) {
   const { id } = await params;
   const { role } = await request.json();
@@ -14,24 +14,24 @@ async function handlePATCH(
     const userInfo = await getCurrentUserInfo();
     if (!userInfo || !userInfo.isOwner) {
       return NextResponse.json(
-        { error: "Unauthorized", message: "Owner privileges required" },
-        { status: 403 },
+        { error: 'Unauthorized', message: 'Owner privileges required' },
+        { status: 403 }
       );
     }
 
     if (!id) {
       return NextResponse.json(
-        { error: "User ID is required" },
-        { status: 400 },
+        { error: 'User ID is required' },
+        { status: 400 }
       );
     }
 
     if (!role) {
-      return NextResponse.json({ error: "Role is required" }, { status: 400 });
+      return NextResponse.json({ error: 'Role is required' }, { status: 400 });
     }
 
     if (!Object.values(UserType).includes(role)) {
-      return NextResponse.json({ error: "Invalid role" }, { status: 400 });
+      return NextResponse.json({ error: 'Invalid role' }, { status: 400 });
     }
 
     const user = await db.user.findUnique({
@@ -43,13 +43,13 @@ async function handlePATCH(
     });
 
     if (!user) {
-      return NextResponse.json({ error: "User not found" }, { status: 404 });
+      return NextResponse.json({ error: 'User not found' }, { status: 404 });
     }
 
     if (user.role === role) {
       return NextResponse.json(
-        { error: "User already has this role" },
-        { status: 400 },
+        { error: 'User already has this role' },
+        { status: 400 }
       );
     } else {
       // Update the user's role
@@ -60,14 +60,14 @@ async function handlePATCH(
     }
 
     return NextResponse.json(
-      { message: "User role updated successfully" },
-      { status: 200 },
+      { message: 'User role updated successfully' },
+      { status: 200 }
     );
   } catch (error) {
     console.error(error);
     return NextResponse.json(
-      { error: "Internal server error" },
-      { status: 500 },
+      { error: 'Internal server error' },
+      { status: 500 }
     );
   }
 }

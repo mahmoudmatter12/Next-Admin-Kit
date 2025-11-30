@@ -1,18 +1,18 @@
-import { NextResponse } from "next/server";
-import { db } from "@/lib/db";
+import { NextResponse } from 'next/server';
+import { db } from '@/lib/db';
 
 async function handleGET() {
   try {
     const users = await db.user.findMany({
-      orderBy: { createdAt: "desc" },
+      orderBy: { createdAt: 'desc' },
     });
 
     return NextResponse.json(users);
   } catch (error) {
-    console.error("Error fetching users:", error);
+    console.error('Error fetching users:', error);
     return NextResponse.json(
-      { error: "Failed to fetch users" },
-      { status: 500 },
+      { error: 'Failed to fetch users' },
+      { status: 500 }
     );
   }
 }

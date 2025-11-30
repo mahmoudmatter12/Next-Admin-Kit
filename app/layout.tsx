@@ -1,5 +1,5 @@
-import "./[locale]/globals.css";
-import { ClerkProviderWrapper } from "../components/providers/ClerkProvider";
+import './[locale]/globals.css';
+import { ClerkProviderWrapper } from '../components/providers/ClerkProvider';
 
 export default function RootLayout({
   children,
@@ -7,7 +7,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang='en'>
       <body>
         <ClerkProviderWrapper>{children}</ClerkProviderWrapper>
       </body>

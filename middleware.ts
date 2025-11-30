@@ -1,13 +1,13 @@
-import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
-import createMiddleware from "next-intl/middleware";
-import { NextResponse } from "next/server";
-import { routing } from "./i18n/routing";
+import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server';
+import createMiddleware from 'next-intl/middleware';
+import { NextResponse } from 'next/server';
+import { routing } from './i18n/routing';
 
 // Define public routes (accessible without authentication)
 // These patterns match with locale prefixes (e.g., /en/login, /ar/login)
 const isPublicRoute = createRouteMatcher([
-  "/(en|ar)/login(.*)",
-  "/(en|ar)/sign-up(.*)",
+  '/(en|ar)/login(.*)',
+  '/(en|ar)/sign-up(.*)',
   // Add more public routes here if needed
 ]);
 
@@ -15,24 +15,24 @@ const isPublicRoute = createRouteMatcher([
 const intlMiddleware = createMiddleware({
   locales: routing.locales,
   defaultLocale: routing.defaultLocale,
-  localePrefix: "always",
+  localePrefix: 'always',
 });
 
 export default clerkMiddleware(async (auth, req) => {
   const { pathname, searchParams } = req.nextUrl;
-  const isApiRoute = pathname.startsWith("/api");
+  const isApiRoute = pathname.startsWith('/api');
 
   // Handle API routes - protect all except GET requests
   if (isApiRoute) {
     const method = req.method;
 
     // Allow GET requests without authentication
-    if (method === "GET") {
+    if (method === 'GET') {
       return NextResponse.next();
     }
 
     // Allow POST requests to /api/messages without authentication
-    if (method === "POST" && pathname.includes("/api/messages")) {
+    if (method === 'POST' && pathname.includes('/api/messages')) {
       return NextResponse.next();
     }
 
@@ -41,8 +41,8 @@ export default clerkMiddleware(async (auth, req) => {
 
     if (!authResult.userId) {
       return NextResponse.json(
-        { error: "Unauthorized", message: "Authentication required" },
-        { status: 401 },
+        { error: 'Unauthorized', message: 'Authentication required' },
+        { status: 401 }
       );
     }
 
@@ -103,7 +103,7 @@ export default clerkMiddleware(async (auth, req) => {
       const locale = localeMatch ? localeMatch[1] : routing.defaultLocale;
 
       const signInUrl = new URL(`/${locale}/login`, req.url);
-      signInUrl.searchParams.set("redirect_url", req.url);
+      signInUrl.searchParams.set('redirect_url', req.url);
       return NextResponse.redirect(signInUrl);
     }
 
@@ -119,8 +119,8 @@ export default clerkMiddleware(async (auth, req) => {
 export const config = {
   matcher: [
     // Match all routes except static files and Next.js internals
-    "/((?!_next|.*\\..*).*)",
+    '/((?!_next|.*\\..*).*)',
     // Include API routes
-    "/(api|trpc)(.*)",
+    '/(api|trpc)(.*)',
   ],
 };

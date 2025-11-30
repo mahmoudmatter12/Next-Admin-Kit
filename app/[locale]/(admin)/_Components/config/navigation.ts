@@ -18,57 +18,57 @@ import {
   FileChartColumn,
   MailCheck,
   DollarSign,
-} from "lucide-react";
-import { NavSection } from "../types/navigation";
+} from 'lucide-react';
+import { NavSection } from '../types/navigation';
 
 // Navigation configuration with role-based access
 export const navigationSections: NavSection[] = [
   {
-    title: "Home",
+    title: 'Home',
     items: [
       {
-        title: "Main Site",
-        href: "/",
+        title: 'Main Site',
+        href: '/',
         icon: Home,
-        description: "Return to the university website",
-        roles: ["OWNER", "SUPERADMIN", "ADMIN"],
+        description: 'Return to the university website',
+        roles: ['OWNER', 'SUPERADMIN', 'ADMIN'],
       },
       {
-        title: "Admin Dashboard",
-        href: "/admin",
+        title: 'Admin Dashboard',
+        href: '/admin',
         icon: BarChart3,
-        description: "Access the admin dashboard",
-        roles: ["OWNER", "SUPERADMIN", "ADMIN"],
+        description: 'Access the admin dashboard',
+        roles: ['OWNER', 'SUPERADMIN', 'ADMIN'],
       },
     ],
   },
   {
-    title: "System",
+    title: 'System',
     items: [
       {
-        title: "User Management",
-        href: "/admin/users",
+        title: 'User Management',
+        href: '/admin/users',
         icon: Shield,
-        description: "Manage system users and roles",
-        roles: ["OWNER"],
+        description: 'Manage system users and roles',
+        roles: ['OWNER'],
         quickAccess: true,
         // Example: Add subitems to make it collapsible
         subItems: [
           {
-            title: "All Users",
-            href: "/admin/users",
+            title: 'All Users',
+            href: '/admin/users',
             icon: Users,
-            roles: ["OWNER"],
-            logoUrl: "/images/logo.png",
+            roles: ['OWNER'],
+            logoUrl: '/images/logo.png',
           },
         ],
       },
       {
-        title: "Settings",
-        href: "/admin/settings",
+        title: 'Settings',
+        href: '/admin/settings',
         icon: Settings,
-        description: "Manage system settings",
-        roles: ["OWNER"],
+        description: 'Manage system settings',
+        roles: ['OWNER'],
         quickAccess: true,
         // Example: Add subitems to make it collapsible
         // subItems: [
@@ -90,15 +90,15 @@ export const navigationSections: NavSection[] = [
   },
 
   {
-    title: "Contributions",
+    title: 'Contributions',
     items: [
       {
-        title: "Contributions",
+        title: 'Contributions',
         href: `${process.env.NEXT_PUBLIC_DEVELOPER_URL}`,
         icon: DollarSign,
         description:
-          "Thank to Mahmoud Matter the main developer of the project",
-        roles: ["OWNER", "SUPERADMIN", "ADMIN"],
+          'Thank to Mahmoud Matter the main developer of the project',
+        roles: ['OWNER', 'SUPERADMIN', 'ADMIN'],
         quickAccess: false,
       },
     ],

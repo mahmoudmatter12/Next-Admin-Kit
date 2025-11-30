@@ -1,6 +1,6 @@
-import { NextRequest, NextResponse } from "next/server";
-import { readFile } from "fs/promises";
-import { join } from "path";
+import { NextRequest, NextResponse } from 'next/server';
+import { readFile } from 'fs/promises';
+import { join } from 'path';
 
 /**
  * API Route to read markdown documentation files
@@ -10,7 +10,7 @@ import { join } from "path";
  */
 export async function GET(
   request: NextRequest,
-  { params }: { params: Promise<{ path: string }> },
+  { params }: { params: Promise<{ path: string }> }
 ) {
   try {
     const { path } = await params;
@@ -19,8 +19,8 @@ export async function GET(
     const decodedPath = decodeURIComponent(path);
 
     // Security: Prevent path traversal attacks
-    if (decodedPath.includes("..") || decodedPath.startsWith("/")) {
-      return NextResponse.json({ error: "Invalid path" }, { status: 400 });
+    if (decodedPath.includes('..') || decodedPath.startsWith('/')) {
+      return NextResponse.json({ error: 'Invalid path' }, { status: 400 });
     }
 
     // Get the project root directory
@@ -30,19 +30,19 @@ export async function GET(
     const filePath = join(projectRoot, decodedPath);
 
     // Read the markdown file
-    const fileContent = await readFile(filePath, "utf-8");
+    const fileContent = await readFile(filePath, 'utf-8');
 
     return NextResponse.json({
       content: fileContent,
       path: decodedPath,
     });
   } catch (error) {
-    console.error("Error reading documentation file:", error);
+    console.error('Error reading documentation file:', error);
 
-    if (error instanceof Error && "code" in error && error.code === "ENOENT") {
-      return NextResponse.json({ error: "File not found" }, { status: 404 });
+    if (error instanceof Error && 'code' in error && error.code === 'ENOENT') {
+      return NextResponse.json({ error: 'File not found' }, { status: 404 });
     }
 
-    return NextResponse.json({ error: "Failed to read file" }, { status: 500 });
+    return NextResponse.json({ error: 'Failed to read file' }, { status: 500 });
   }
 }

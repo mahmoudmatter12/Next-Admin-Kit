@@ -1,5 +1,5 @@
-import { NextRequest, NextResponse } from "next/server";
-import { getCurrentUserInfo } from "@/lib/auth-utils";
+import { NextRequest, NextResponse } from 'next/server';
+import { getCurrentUserInfo } from '@/lib/auth-utils';
 
 /**
  * Get current authenticated user's role information
@@ -10,8 +10,8 @@ export async function GET(req: NextRequest) {
 
     if (!userInfo) {
       return NextResponse.json(
-        { error: "User not found or not authenticated" },
-        { status: 401 },
+        { error: 'User not found or not authenticated' },
+        { status: 401 }
       );
     }
 
@@ -22,10 +22,10 @@ export async function GET(req: NextRequest) {
       isOwner: userInfo.isOwner,
     });
   } catch (error) {
-    console.error("Error fetching current user info:", error);
+    console.error('Error fetching current user info:', error);
     return NextResponse.json(
-      { error: "Failed to fetch user information" },
-      { status: 500 },
+      { error: 'Failed to fetch user information' },
+      { status: 500 }
     );
   }
 }

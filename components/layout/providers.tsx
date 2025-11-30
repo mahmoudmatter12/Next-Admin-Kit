@@ -1,14 +1,14 @@
-"use client";
+'use client';
 
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { ThemeProvider as NextThemeProvider } from "next-themes";
-import { ReactNode, useState } from "react";
-import { UserProvider } from "@/contexts/userContext";
-import { ClerkProviderWrapper } from "@/components/providers/ClerkProvider";
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ThemeProvider as NextThemeProvider } from 'next-themes';
+import { ReactNode, useState } from 'react';
+import { UserProvider } from '@/contexts/userContext';
+import { ClerkProviderWrapper } from '@/components/providers/ClerkProvider';
 import {
   getThemeIds,
   getDefaultThemeId,
-} from "@/app/[locale]/(admin)/_Components/config/theme.config";
+} from '@/app/[locale]/(admin)/_Components/config/theme.config';
 
 interface ProvidersProps {
   children: ReactNode;
@@ -28,14 +28,14 @@ export function Providers({ children }: ProvidersProps) {
             retry: 1,
           },
         },
-      }),
+      })
   );
 
   return (
     <ClerkProviderWrapper>
       <QueryClientProvider client={queryClient}>
         <NextThemeProvider
-          attribute="class"
+          attribute='class'
           defaultTheme={getDefaultThemeId()}
           enableSystem
           disableTransitionOnChange

@@ -1,2 +1,2 @@
 // Export axios instance
-export { api } from "../lib/axios";
+export { api } from '../lib/axios';

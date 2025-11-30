@@ -1,10 +1,10 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest, NextResponse } from 'next/server';
 
 // Rate limiting configuration
 const RATE_LIMIT_CONFIG = {
   windowMs: 15 * 60 * 1000, // 15 minutes
   maxRequests: 5, // Maximum 5 requests per window
-  message: "Too many contact form submissions, please try again later.",
+  message: 'Too many contact form submissions, please try again later.',
 };
 
 // Store for rate limiting (in production, use Redis or similar)
@@ -12,10 +12,10 @@ const rateLimitStore = new Map<string, { count: number; resetTime: number }>();
 
 export function rateLimitMiddleware(request: NextRequest) {
   const ip =
-    request.headers.get("x-forwarded-for") ||
-    request.headers.get("x-real-ip") ||
-    request.headers.get("cf-connecting-ip") ||
-    "unknown";
+    request.headers.get('x-forwarded-for') ||
+    request.headers.get('x-real-ip') ||
+    request.headers.get('cf-connecting-ip') ||
+    'unknown';
   const now = Date.now();
   const windowMs = RATE_LIMIT_CONFIG.windowMs;
 
@@ -54,7 +54,7 @@ export function rateLimitMiddleware(request: NextRequest) {
         error: RATE_LIMIT_CONFIG.message,
         retryAfter: Math.ceil((current.resetTime - now) / 1000),
       },
-      { status: 429 },
+      { status: 429 }
     );
   }
 
@@ -71,7 +71,7 @@ export class RateLimiter {
 
   constructor(
     private windowMs: number = 15 * 60 * 1000, // 15 minutes
-    private maxRequests: number = 5,
+    private maxRequests: number = 5
   ) {}
 
   isAllowed(identifier: string): { allowed: boolean; retryAfter?: number } {
@@ -148,5 +148,5 @@ export class RateLimiter {
 // Create a global rate limiter instance
 export const contactFormRateLimiter = new RateLimiter(
   15 * 60 * 1000, // 15 minutes
-  5, // 5 requests per window
+  5 // 5 requests per window
 );

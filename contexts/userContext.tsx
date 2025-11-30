@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import React, { createContext, useContext, useEffect, ReactNode } from "react";
-import { useUser as useClerkUser } from "@clerk/nextjs";
-import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { setUserIdHeader } from "@/lib/axios";
-import { User, UserType } from "@/types/user";
-import { UserService } from "@/services/user.service";
+import React, { createContext, useContext, useEffect, ReactNode } from 'react';
+import { useUser as useClerkUser } from '@clerk/nextjs';
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import { setUserIdHeader } from '@/lib/axios';
+import { User, UserType } from '@/types/user';
+import { UserService } from '@/services/user.service';
 
 interface UserContextType {
   user: User | null;
@@ -22,7 +22,7 @@ interface UserProviderProps {
 }
 
 // Query keys for React Query
-const USER_QUERY_KEY = "user";
+const USER_QUERY_KEY = 'user';
 
 export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
   const { user: clerkUser, isLoaded: clerkLoaded } = useClerkUser();
@@ -57,16 +57,16 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
     staleTime: 5 * 60 * 1000, // 5 minutes
     gcTime: 10 * 60 * 1000, // 10 minutes (formerly cacheTime)
     retry: 3,
-    retryDelay: (attemptIndex) => Math.min(1000 * 2 ** attemptIndex, 30000),
+    retryDelay: attemptIndex => Math.min(1000 * 2 ** attemptIndex, 30000),
   });
 
   // Update user mutation using React Query
   const updateUserMutation = useMutation({
     mutationFn: async (updates: Partial<User>) => {
-      if (!user?.id) throw new Error("No user to update");
+      if (!user?.id) throw new Error('No user to update');
       return await UserService.updateUser(user.id, updates);
     },
-    onSuccess: (updatedUserData) => {
+    onSuccess: updatedUserData => {
       // Convert date strings to Date objects
       const updatedUser: User = {
         ...updatedUserData,
@@ -77,8 +77,8 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
       // Update the cache with the new user data
       queryClient.setQueryData([USER_QUERY_KEY, clerkUser?.id], updatedUser);
     },
-    onError: (error) => {
-      console.error("Error updating user:", error);
+    onError: error => {
+      console.error('Error updating user:', error);
     },
   });
 
@@ -116,7 +116,7 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
 export const useUser = (): UserContextType => {
   const context = useContext(UserContext);
   if (context === undefined) {
-    throw new Error("useUser must be used within a UserProvider");
+    throw new Error('useUser must be used within a UserProvider');
   }
   return context;
 };
@@ -144,23 +144,23 @@ export const useIsAuthenticated = (): boolean => {
 
 export const useIsAdmin = (): boolean => {
   const { user } = useUser();
-  return user?.role === "ADMIN";
+  return user?.role === 'ADMIN';
 };
 
 export const useIsSuperAdmin = (): boolean => {
   const { user } = useUser();
-  return user?.role === "SUPERADMIN";
+  return user?.role === 'SUPERADMIN';
 };
 
 export const useIsOwner = (): boolean => {
   const { user } = useUser();
   // Always check actual role for ownership
-  return user?.role === "OWNER";
+  return user?.role === 'OWNER';
 };
 
 export const useCheckViewRoleOwner = (): boolean => {
   const { user } = useUser();
-  return user?.role === "OWNER";
+  return user?.role === 'OWNER';
 };
 
 export const useRole = (): UserType | undefined => {
@@ -194,7 +194,7 @@ export const useUserQuery = () => {
     staleTime: 5 * 60 * 1000, // 5 minutes
     gcTime: 10 * 60 * 1000, // 10 minutes
     retry: 3,
-    retryDelay: (attemptIndex) => Math.min(1000 * 2 ** attemptIndex, 30000),
+    retryDelay: attemptIndex => Math.min(1000 * 2 ** attemptIndex, 30000),
   });
 };
 
@@ -212,7 +212,7 @@ export const useUpdateUserMutation = () => {
     }) => {
       return await UserService.updateUser(userId, updates);
     },
-    onSuccess: (updatedUserData) => {
+    onSuccess: updatedUserData => {
       const updatedUser: User = {
         ...updatedUserData,
         createdAt: new Date(updatedUserData.createdAt),
@@ -222,8 +222,8 @@ export const useUpdateUserMutation = () => {
       // Update the cache with the new user data
       queryClient.setQueryData([USER_QUERY_KEY, clerkUser?.id], updatedUser);
     },
-    onError: (error) => {
-      console.error("Error updating user:", error);
+    onError: error => {
+      console.error('Error updating user:', error);
     },
   });
 };

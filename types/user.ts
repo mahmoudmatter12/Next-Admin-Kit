@@ -1,8 +1,8 @@
 export enum UserType {
-  ADMIN = "ADMIN",
-  SUPERADMIN = "SUPERADMIN",
-  GUEST = "GUEST",
-  OWNER = "OWNER",
+  ADMIN = 'ADMIN',
+  SUPERADMIN = 'SUPERADMIN',
+  GUEST = 'GUEST',
+  OWNER = 'OWNER',
 }
 
 // Base User interface

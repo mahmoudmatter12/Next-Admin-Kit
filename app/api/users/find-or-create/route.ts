@@ -1,17 +1,17 @@
-import { db } from "@/lib/db";
-import { NextRequest, NextResponse } from "next/server";
-import { clerkClient } from "@clerk/nextjs/server";
-import { UserType } from "@/types/user";
-import { UserResponse, ApiErrorResponse } from "@/types/user";
+import { db } from '@/lib/db';
+import { NextRequest, NextResponse } from 'next/server';
+import { clerkClient } from '@clerk/nextjs/server';
+import { UserType } from '@/types/user';
+import { UserResponse, ApiErrorResponse } from '@/types/user';
 
 // Handle CORS preflight requests
 async function handleOPTIONS() {
   return new NextResponse(null, {
     status: 200,
     headers: {
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
-      "Access-Control-Allow-Headers": "Content-Type, Authorization, x-user-id",
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type, Authorization, x-user-id',
     },
   });
 }
@@ -23,10 +23,10 @@ async function handlePOST(req: NextRequest) {
     const { clerkId } = body;
 
     // Validate input
-    if (!clerkId || typeof clerkId !== "string") {
+    if (!clerkId || typeof clerkId !== 'string') {
       const errorResponse: ApiErrorResponse = {
-        error: "Invalid input",
-        message: "Clerk ID is required and must be a string",
+        error: 'Invalid input',
+        message: 'Clerk ID is required and must be a string',
         statusCode: 400,
       };
       return NextResponse.json(errorResponse, { status: 400 });
@@ -46,8 +46,8 @@ async function handlePOST(req: NextRequest) {
         // Validate Clerk user data
         if (!clerkUser.emailAddresses?.[0]?.emailAddress) {
           const errorResponse: ApiErrorResponse = {
-            error: "Invalid Clerk user",
-            message: "User email is required but not found in Clerk",
+            error: 'Invalid Clerk user',
+            message: 'User email is required but not found in Clerk',
             statusCode: 400,
           };
           return NextResponse.json(errorResponse, { status: 400 });
@@ -66,10 +66,10 @@ async function handlePOST(req: NextRequest) {
 
         console.log(`Created new user: ${user.id} for Clerk ID: ${clerkId}`);
       } catch (clerkError) {
-        console.error("Error fetching user from Clerk:", clerkError);
+        console.error('Error fetching user from Clerk:', clerkError);
         const errorResponse: ApiErrorResponse = {
-          error: "Clerk integration error",
-          message: "Failed to fetch user data from Clerk",
+          error: 'Clerk integration error',
+          message: 'Failed to fetch user data from Clerk',
           statusCode: 500,
         };
         return NextResponse.json(errorResponse, { status: 500 });
@@ -90,10 +90,10 @@ async function handlePOST(req: NextRequest) {
 
     return NextResponse.json(userResponse);
   } catch (error) {
-    console.error("Error in find-or-create user:", error);
+    console.error('Error in find-or-create user:', error);
     const errorResponse: ApiErrorResponse = {
-      error: "Internal server error",
-      message: "Failed to find or create user",
+      error: 'Internal server error',
+      message: 'Failed to find or create user',
       statusCode: 500,
     };
     return NextResponse.json(errorResponse, { status: 500 });

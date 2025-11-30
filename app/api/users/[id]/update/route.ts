@@ -1,18 +1,18 @@
-import { NextRequest, NextResponse } from "next/server";
-import { db } from "@/lib/db";
-import { getCurrentUserInfo } from "@/lib/auth-utils";
+import { NextRequest, NextResponse } from 'next/server';
+import { db } from '@/lib/db';
+import { getCurrentUserInfo } from '@/lib/auth-utils';
 
 async function handlePATCH(
   request: NextRequest,
-  { params }: { params: Promise<{ id: string }> },
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     // Check if user is OWNER
     const userInfo = await getCurrentUserInfo();
     if (!userInfo || !userInfo.isOwner) {
       return NextResponse.json(
-        { error: "Unauthorized", message: "Owner privileges required" },
-        { status: 403 },
+        { error: 'Unauthorized', message: 'Owner privileges required' },
+        { status: 403 }
       );
     }
 
@@ -46,18 +46,18 @@ async function handlePATCH(
 
     return NextResponse.json(userResponse);
   } catch (error) {
-    console.error("Error updating user:", error);
+    console.error('Error updating user:', error);
     if (
-      typeof error === "object" &&
+      typeof error === 'object' &&
       error !== null &&
-      "code" in error &&
-      (error as { code?: string }).code === "P2025"
+      'code' in error &&
+      (error as { code?: string }).code === 'P2025'
     ) {
-      return NextResponse.json({ error: "User not found" }, { status: 404 });
+      return NextResponse.json({ error: 'User not found' }, { status: 404 });
     }
     return NextResponse.json(
-      { error: "Failed to update user" },
-      { status: 500 },
+      { error: 'Failed to update user' },
+      { status: 500 }
     );
   }
 }

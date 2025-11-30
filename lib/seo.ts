@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata } from 'next';
 
 export interface SEOConfig {
   title: string;
@@ -6,7 +6,7 @@ export interface SEOConfig {
   keywords?: string[];
   image?: string;
   url?: string;
-  type?: "website" | "article" | "product";
+  type?: 'website' | 'article' | 'product';
   locale?: string;
   alternateLocales?: { locale: string; url: string }[];
   noindex?: boolean;
@@ -28,8 +28,8 @@ export function generateMetadata(config: SEOConfig): Metadata {
     keywords = [],
     image,
     url,
-    type = "website",
-    locale = "en",
+    type = 'website',
+    locale = 'en',
     alternateLocales = [],
     noindex = false,
     nofollow = false,
@@ -40,12 +40,12 @@ export function generateMetadata(config: SEOConfig): Metadata {
     tags = [],
   } = config;
 
-  const siteName = process.env.NEXT_PUBLIC_PROJECT_NAME || "AdminKit";
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://adminkit.dev";
+  const siteName = process.env.NEXT_PUBLIC_PROJECT_NAME || 'AdminKit';
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://adminkit.dev';
   const defaultImage = `${siteUrl}/og-image.png`;
   const fullUrl = url ? `${siteUrl}${url}` : siteUrl;
   const fullImage = image
-    ? image.startsWith("http")
+    ? image.startsWith('http')
       ? image
       : `${siteUrl}${image}`
     : defaultImage;
@@ -56,7 +56,7 @@ export function generateMetadata(config: SEOConfig): Metadata {
       template: `%s | ${siteName}`,
     },
     description,
-    keywords: keywords.length > 0 ? keywords.join(", ") : undefined,
+    keywords: keywords.length > 0 ? keywords.join(', ') : undefined,
     authors: author ? [{ name: author }] : undefined,
     creator: author,
     publisher: siteName,
@@ -73,13 +73,13 @@ export function generateMetadata(config: SEOConfig): Metadata {
           alternateLocales.map(({ locale, url }) => [
             locale,
             `${siteUrl}${url}`,
-          ]),
+          ])
         ),
-        "x-default": fullUrl,
+        'x-default': fullUrl,
       },
     },
     openGraph: {
-      type: type === "article" ? "article" : "website",
+      type: type === 'article' ? 'article' : 'website',
       locale: locale,
       url: fullUrl,
       title: title,
@@ -100,7 +100,7 @@ export function generateMetadata(config: SEOConfig): Metadata {
       ...(tags.length > 0 && { tags }),
     },
     twitter: {
-      card: "summary_large_image",
+      card: 'summary_large_image',
       title: title,
       description: description,
       images: [fullImage],
@@ -113,9 +113,9 @@ export function generateMetadata(config: SEOConfig): Metadata {
       googleBot: {
         index: !noindex,
         follow: !nofollow,
-        "max-video-preview": -1,
-        "max-image-preview": "large",
-        "max-snippet": -1,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
       },
     },
     verification: {
@@ -133,11 +133,11 @@ export function generateMetadata(config: SEOConfig): Metadata {
  */
 export function generateStructuredData(config: {
   type:
-    | "WebSite"
-    | "WebPage"
-    | "Article"
-    | "SoftwareApplication"
-    | "Organization";
+    | 'WebSite'
+    | 'WebPage'
+    | 'Article'
+    | 'SoftwareApplication'
+    | 'Organization';
   name: string;
   description: string;
   url: string;
@@ -164,23 +164,23 @@ export function generateStructuredData(config: {
     reviewCount: string;
   };
 }) {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://adminkit.dev";
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://adminkit.dev';
   const defaultImage = `${siteUrl}/og-image.png`;
   const defaultLogo = `${siteUrl}/logo.png`;
 
   const baseData = {
-    "@context": "https://schema.org",
-    "@type": config.type,
+    '@context': 'https://schema.org',
+    '@type': config.type,
     name: config.name,
     description: config.description,
-    url: config.url.startsWith("http") ? config.url : `${siteUrl}${config.url}`,
+    url: config.url.startsWith('http') ? config.url : `${siteUrl}${config.url}`,
     ...(config.image && {
-      image: config.image.startsWith("http")
+      image: config.image.startsWith('http')
         ? config.image
         : `${siteUrl}${config.image}`,
     }),
     ...(config.logo && {
-      logo: config.logo.startsWith("http")
+      logo: config.logo.startsWith('http')
         ? config.logo
         : `${siteUrl}${config.logo}`,
     }),
@@ -188,53 +188,53 @@ export function generateStructuredData(config: {
     ...(config.dateModified && { dateModified: config.dateModified }),
   };
 
-  if (config.type === "WebSite") {
+  if (config.type === 'WebSite') {
     return {
       ...baseData,
       potentialAction: {
-        "@type": "SearchAction",
+        '@type': 'SearchAction',
         target: {
-          "@type": "EntryPoint",
+          '@type': 'EntryPoint',
           urlTemplate: `${siteUrl}/search?q={search_term_string}`,
         },
-        "query-input": "required name=search_term_string",
+        'query-input': 'required name=search_term_string',
       },
     };
   }
 
-  if (config.type === "SoftwareApplication") {
+  if (config.type === 'SoftwareApplication') {
     return {
       ...baseData,
-      applicationCategory: config.applicationCategory || "DeveloperApplication",
-      operatingSystem: config.operatingSystem || "Web",
-      ...(config.offers && { offers: { "@type": "Offer", ...config.offers } }),
+      applicationCategory: config.applicationCategory || 'DeveloperApplication',
+      operatingSystem: config.operatingSystem || 'Web',
+      ...(config.offers && { offers: { '@type': 'Offer', ...config.offers } }),
       ...(config.aggregateRating && {
         aggregateRating: {
-          "@type": "AggregateRating",
+          '@type': 'AggregateRating',
           ...config.aggregateRating,
         },
       }),
     };
   }
 
-  if (config.type === "Article") {
+  if (config.type === 'Article') {
     return {
       ...baseData,
       ...(config.author && {
         author: {
-          "@type": "Person",
+          '@type': 'Person',
           name: config.author.name,
           ...(config.author.url && { url: config.author.url }),
         },
       }),
       ...(config.publisher && {
         publisher: {
-          "@type": "Organization",
+          '@type': 'Organization',
           name: config.publisher.name,
           ...(config.publisher.logo && {
             logo: {
-              "@type": "ImageObject",
-              url: config.publisher.logo.startsWith("http")
+              '@type': 'ImageObject',
+              url: config.publisher.logo.startsWith('http')
                 ? config.publisher.logo
                 : `${siteUrl}${config.publisher.logo}`,
             },
@@ -251,24 +251,24 @@ export function generateStructuredData(config: {
  * Default SEO configuration
  */
 export const defaultSEO: SEOConfig = {
-  title: process.env.NEXT_PUBLIC_PROJECT_NAME || "AdminKit",
+  title: process.env.NEXT_PUBLIC_PROJECT_NAME || 'AdminKit',
   description:
     process.env.NEXT_PUBLIC_PROJECT_DESCRIPTION ||
-    "Full-stack admin panel starter with Next.js, Prisma, Clerk, RBAC, Themes & i18n",
+    'Full-stack admin panel starter with Next.js, Prisma, Clerk, RBAC, Themes & i18n',
   keywords: [
-    "admin panel",
-    "admin dashboard",
-    "next.js",
-    "prisma",
-    "clerk",
-    "rbac",
-    "typescript",
-    "tailwind css",
-    "react",
-    "full stack",
-    "starter template",
-    "boilerplate",
+    'admin panel',
+    'admin dashboard',
+    'next.js',
+    'prisma',
+    'clerk',
+    'rbac',
+    'typescript',
+    'tailwind css',
+    'react',
+    'full stack',
+    'starter template',
+    'boilerplate',
   ],
-  image: "/og-image.png",
-  type: "website",
+  image: '/og-image.png',
+  type: 'website',
 };

@@ -11,21 +11,21 @@
  * - Control role-based visibility with 'roles' array
  */
 
-import { LucideIcon } from "lucide-react";
+import { LucideIcon } from 'lucide-react';
 
 export interface DashboardSection {
   id: string;
   title: string;
   enabled: boolean;
   order: number; // Display order (lower numbers appear first)
-  component: "quickActions" | "stats" | "welcome" | "custom";
-  roles?: ("ADMIN" | "SUPERADMIN" | "OWNER")[]; // Role-based visibility
+  component: 'quickActions' | 'stats' | 'welcome' | 'custom';
+  roles?: ('ADMIN' | 'SUPERADMIN' | 'OWNER')[]; // Role-based visibility
 }
 
 export interface DashboardLayout {
   sections: DashboardSection[];
-  layout: "single-column" | "two-column" | "grid";
-  spacing: "compact" | "normal" | "spacious";
+  layout: 'single-column' | 'two-column' | 'grid';
+  spacing: 'compact' | 'normal' | 'spacious';
 }
 
 // ============================================
@@ -34,32 +34,32 @@ export interface DashboardLayout {
 export const dashboardConfig: DashboardLayout = {
   sections: [
     {
-      id: "welcome",
-      title: "",
+      id: 'welcome',
+      title: '',
       enabled: true,
       order: 1, // Appears first
-      component: "welcome",
-      roles: ["OWNER", "SUPERADMIN", "ADMIN"],
+      component: 'welcome',
+      roles: ['OWNER', 'SUPERADMIN', 'ADMIN'],
     },
     {
-      id: "stats",
-      title: "Overview",
+      id: 'stats',
+      title: 'Overview',
       enabled: true,
       order: 2, // Appears second
-      component: "stats",
-      roles: ["OWNER", "SUPERADMIN", "ADMIN"],
+      component: 'stats',
+      roles: ['OWNER', 'SUPERADMIN', 'ADMIN'],
     },
     {
-      id: "quickActions",
-      title: "Quick Actions",
+      id: 'quickActions',
+      title: 'Quick Actions',
       enabled: true,
       order: 3, // Appears third
-      component: "quickActions",
-      roles: ["OWNER", "SUPERADMIN", "ADMIN"],
+      component: 'quickActions',
+      roles: ['OWNER', 'SUPERADMIN', 'ADMIN'],
     },
   ],
-  layout: "single-column", // All sections in one column
-  spacing: "normal", // Normal spacing between sections
+  layout: 'single-column', // All sections in one column
+  spacing: 'normal', // Normal spacing between sections
 };
 
 // ============================================
@@ -242,10 +242,10 @@ export const dashboardConfig: DashboardLayout = {
  */
 export function getEnabledSections(role?: string): DashboardSection[] {
   return dashboardConfig.sections
-    .filter((section) => {
+    .filter(section => {
       if (!section.enabled) return false;
       if (!section.roles) return true;
-      return section.roles.includes(role as "ADMIN" | "SUPERADMIN" | "OWNER");
+      return section.roles.includes(role as 'ADMIN' | 'SUPERADMIN' | 'OWNER');
     })
     .sort((a, b) => a.order - b.order);
 }

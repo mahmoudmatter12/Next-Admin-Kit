@@ -1,11 +1,11 @@
-import { api } from "@/lib/axios";
-import { UserType } from "@/types/user";
+import { api } from '@/lib/axios';
+import { UserType } from '@/types/user';
 import {
   UserResponse,
   CreateUserInput,
   UpdateUserInput,
   PaginatedResponse,
-} from "@/types/user";
+} from '@/types/user';
 
 export class UserService {
   /**
@@ -17,11 +17,11 @@ export class UserService {
     limit?: number;
   }): Promise<PaginatedResponse<UserResponse>> {
     try {
-      const res = await api.get("/users/all", { params });
+      const res = await api.get('/users/all', { params });
       return res.data;
     } catch (error: any) {
-      console.error("Error fetching users:", error);
-      throw new Error(error.response?.data?.message || "Failed to fetch users");
+      console.error('Error fetching users:', error);
+      throw new Error(error.response?.data?.message || 'Failed to fetch users');
     }
   }
 
@@ -32,7 +32,7 @@ export class UserService {
     includeCollege?: boolean;
   }): Promise<UserResponse[]> {
     try {
-      const res = await api.get("/users/all", {
+      const res = await api.get('/users/all', {
         params: {
           ...params,
           page: 1,
@@ -41,8 +41,8 @@ export class UserService {
       });
       return res.data.data || [];
     } catch (error: any) {
-      console.error("Error fetching all users:", error);
-      throw new Error(error.response?.data?.message || "Failed to fetch users");
+      console.error('Error fetching all users:', error);
+      throw new Error(error.response?.data?.message || 'Failed to fetch users');
     }
   }
 
@@ -54,9 +54,9 @@ export class UserService {
       const res = await api.get(`/users/clerk/${userId}`);
       return res.data;
     } catch (error: any) {
-      console.error("Error fetching current user:", error);
+      console.error('Error fetching current user:', error);
       throw new Error(
-        error.response?.data?.message || "Failed to fetch current user",
+        error.response?.data?.message || 'Failed to fetch current user'
       );
     }
   }
@@ -66,16 +66,16 @@ export class UserService {
    */
   static async findOrCreateUser(clerkId: string): Promise<UserResponse> {
     try {
-      if (!clerkId || typeof clerkId !== "string") {
-        throw new Error("Valid Clerk ID is required");
+      if (!clerkId || typeof clerkId !== 'string') {
+        throw new Error('Valid Clerk ID is required');
       }
 
-      const res = await api.post("/users/find-or-create", { clerkId });
+      const res = await api.post('/users/find-or-create', { clerkId });
       return res.data;
     } catch (error: any) {
-      console.error("Error finding or creating user:", error);
+      console.error('Error finding or creating user:', error);
       throw new Error(
-        error.response?.data?.message || "Failed to find or create user",
+        error.response?.data?.message || 'Failed to find or create user'
       );
     }
   }
@@ -85,18 +85,18 @@ export class UserService {
    */
   static async updateUser(
     userId: string,
-    updates: UpdateUserInput,
+    updates: UpdateUserInput
   ): Promise<UserResponse> {
     try {
-      if (!userId || typeof userId !== "string") {
-        throw new Error("Valid user ID is required");
+      if (!userId || typeof userId !== 'string') {
+        throw new Error('Valid user ID is required');
       }
 
       const res = await api.patch(`/users/${userId}/update`, updates);
       return res.data;
     } catch (error: any) {
-      console.error("Error updating user:", error);
-      throw new Error(error.response?.data?.message || "Failed to update user");
+      console.error('Error updating user:', error);
+      throw new Error(error.response?.data?.message || 'Failed to update user');
     }
   }
 
@@ -105,15 +105,15 @@ export class UserService {
    */
   static async getUserById(userId: string): Promise<UserResponse> {
     try {
-      if (!userId || typeof userId !== "string") {
-        throw new Error("Valid user ID is required");
+      if (!userId || typeof userId !== 'string') {
+        throw new Error('Valid user ID is required');
       }
 
       const res = await api.get(`/users/${userId}`);
       return res.data;
     } catch (error: any) {
-      console.error("Error fetching user by ID:", error);
-      throw new Error(error.response?.data?.message || "Failed to fetch user");
+      console.error('Error fetching user by ID:', error);
+      throw new Error(error.response?.data?.message || 'Failed to fetch user');
     }
   }
 
@@ -121,18 +121,18 @@ export class UserService {
    * Delete user by ID
    */
   static async deleteUser(
-    userId: string,
+    userId: string
   ): Promise<{ success: boolean; message: string }> {
     try {
-      if (!userId || typeof userId !== "string") {
-        throw new Error("Valid user ID is required");
+      if (!userId || typeof userId !== 'string') {
+        throw new Error('Valid user ID is required');
       }
 
       const res = await api.delete(`/users/${userId}/delete`);
       return res.data;
     } catch (error: any) {
-      console.error("Error deleting user:", error);
-      throw new Error(error.response?.data?.message || "Failed to delete user");
+      console.error('Error deleting user:', error);
+      throw new Error(error.response?.data?.message || 'Failed to delete user');
     }
   }
 
@@ -141,12 +141,12 @@ export class UserService {
    */
   static async getSuperAdmins(): Promise<UserResponse[]> {
     try {
-      const res = await api.get("/users/superadmins");
+      const res = await api.get('/users/superadmins');
       return res.data;
     } catch (error: any) {
-      console.error("Error fetching super admins:", error);
+      console.error('Error fetching super admins:', error);
       throw new Error(
-        error.response?.data?.message || "Failed to fetch super admins",
+        error.response?.data?.message || 'Failed to fetch super admins'
       );
     }
   }
@@ -156,23 +156,23 @@ export class UserService {
    */
   static async toggleUserRole(
     userId: string,
-    role: UserType,
+    role: UserType
   ): Promise<UserResponse> {
     try {
-      if (!userId || typeof userId !== "string") {
-        throw new Error("Valid user ID is required");
+      if (!userId || typeof userId !== 'string') {
+        throw new Error('Valid user ID is required');
       }
 
       if (!Object.values(UserType).includes(role)) {
-        throw new Error("Invalid user role");
+        throw new Error('Invalid user role');
       }
 
       const res = await api.patch(`/users/${userId}/toggle-role`, { role });
       return res.data;
     } catch (error: any) {
-      console.error("Error toggling user role:", error);
+      console.error('Error toggling user role:', error);
       throw new Error(
-        error.response?.data?.message || "Failed to toggle user role",
+        error.response?.data?.message || 'Failed to toggle user role'
       );
     }
   }
@@ -182,15 +182,15 @@ export class UserService {
    */
   static async moveUserToCollage(
     userId: string,
-    collageId: string,
+    collageId: string
   ): Promise<UserResponse> {
     try {
-      if (!userId || typeof userId !== "string") {
-        throw new Error("Valid user ID is required");
+      if (!userId || typeof userId !== 'string') {
+        throw new Error('Valid user ID is required');
       }
 
-      if (!collageId || typeof collageId !== "string") {
-        throw new Error("Valid college ID is required");
+      if (!collageId || typeof collageId !== 'string') {
+        throw new Error('Valid college ID is required');
       }
 
       const res = await api.patch(`/users/${userId}/move-to-collage`, {
@@ -198,9 +198,9 @@ export class UserService {
       });
       return res.data;
     } catch (error: any) {
-      console.error("Error moving user to college:", error);
+      console.error('Error moving user to college:', error);
       throw new Error(
-        error.response?.data?.message || "Failed to move user to college",
+        error.response?.data?.message || 'Failed to move user to college'
       );
     }
   }
@@ -210,15 +210,15 @@ export class UserService {
    */
   static async createUser(userData: CreateUserInput): Promise<UserResponse> {
     try {
-      if (!userData.email || typeof userData.email !== "string") {
-        throw new Error("Valid email is required");
+      if (!userData.email || typeof userData.email !== 'string') {
+        throw new Error('Valid email is required');
       }
 
-      const res = await api.post("/users/create", userData);
+      const res = await api.post('/users/create', userData);
       return res.data;
     } catch (error: any) {
-      console.error("Error creating user:", error);
-      throw new Error(error.response?.data?.message || "Failed to create user");
+      console.error('Error creating user:', error);
+      throw new Error(error.response?.data?.message || 'Failed to create user');
     }
   }
 
@@ -230,14 +230,14 @@ export class UserService {
     params?: {
       page?: number;
       limit?: number;
-    },
+    }
   ): Promise<PaginatedResponse<UserResponse>> {
     try {
-      if (!query || typeof query !== "string") {
-        throw new Error("Valid search query is required");
+      if (!query || typeof query !== 'string') {
+        throw new Error('Valid search query is required');
       }
 
-      const res = await api.get("/users/search", {
+      const res = await api.get('/users/search', {
         params: {
           q: query,
           ...params,
@@ -245,9 +245,9 @@ export class UserService {
       });
       return res.data;
     } catch (error: any) {
-      console.error("Error searching users:", error);
+      console.error('Error searching users:', error);
       throw new Error(
-        error.response?.data?.message || "Failed to search users",
+        error.response?.data?.message || 'Failed to search users'
       );
     }
   }

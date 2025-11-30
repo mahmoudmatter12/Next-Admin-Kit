@@ -1,5 +1,5 @@
-import { db } from "@/lib/db";
-import { NextRequest, NextResponse } from "next/server";
+import { db } from '@/lib/db';
+import { NextRequest, NextResponse } from 'next/server';
 
 async function handlePOST(req: NextRequest) {
   try {
@@ -7,7 +7,7 @@ async function handlePOST(req: NextRequest) {
     const { email, name, role } = body;
 
     if (!email) {
-      return NextResponse.json({ error: "Email is required" }, { status: 400 });
+      return NextResponse.json({ error: 'Email is required' }, { status: 400 });
     }
 
     const user = await db.user.create({
@@ -20,21 +20,21 @@ async function handlePOST(req: NextRequest) {
 
     return NextResponse.json(user, { status: 201 });
   } catch (error) {
-    console.error("Error creating user:", error);
+    console.error('Error creating user:', error);
     if (
-      typeof error === "object" &&
+      typeof error === 'object' &&
       error !== null &&
-      "code" in error &&
-      (error as { code?: string }).code === "P2025"
+      'code' in error &&
+      (error as { code?: string }).code === 'P2025'
     ) {
       return NextResponse.json(
-        { error: "Email already exists" },
-        { status: 409 },
+        { error: 'Email already exists' },
+        { status: 409 }
       );
     }
     return NextResponse.json(
-      { error: "Failed to create user" },
-      { status: 500 },
+      { error: 'Failed to create user' },
+      { status: 500 }
     );
   }
 }

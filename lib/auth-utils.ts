@@ -1,5 +1,5 @@
-import { auth } from "@clerk/nextjs/server";
-import { db } from "@/lib/db";
+import { auth } from '@clerk/nextjs/server';
+import { db } from '@/lib/db';
 
 export interface CurrentUserInfo {
   id: string;
@@ -21,8 +21,8 @@ export async function getCurrentUserInfo(): Promise<CurrentUserInfo | null> {
 
     if (!userId) {
       // Log in production to help debug
-      if (process.env.NODE_ENV === "production") {
-        console.log("[getCurrentUserInfo] No userId found in auth result");
+      if (process.env.NODE_ENV === 'production') {
+        console.log('[getCurrentUserInfo] No userId found in auth result');
       }
       return null;
     }
@@ -37,9 +37,9 @@ export async function getCurrentUserInfo(): Promise<CurrentUserInfo | null> {
 
     if (!user) {
       // Log in production to help debug
-      if (process.env.NODE_ENV === "production") {
+      if (process.env.NODE_ENV === 'production') {
         console.log(
-          `[getCurrentUserInfo] User not found in database for clerkId: ${userId}`,
+          `[getCurrentUserInfo] User not found in database for clerkId: ${userId}`
         );
       }
       return null;
@@ -47,9 +47,9 @@ export async function getCurrentUserInfo(): Promise<CurrentUserInfo | null> {
 
     const role = user.role;
     // Calculate permissions based on effective role (for viewing)
-    const isAdmin = role === "ADMIN";
-    const isSuperAdmin = role === "SUPERADMIN";
-    const isOwner = role === "OWNER"; // Always check actual role for ownership
+    const isAdmin = role === 'ADMIN';
+    const isSuperAdmin = role === 'SUPERADMIN';
+    const isOwner = role === 'OWNER'; // Always check actual role for ownership
 
     // Only ADMIN role should be filtered by university
     // SUPERADMIN and OWNER can see all students
@@ -63,9 +63,9 @@ export async function getCurrentUserInfo(): Promise<CurrentUserInfo | null> {
     };
   } catch (error) {
     // Enhanced error logging for production debugging
-    console.error("Error getting current user info:", error);
+    console.error('Error getting current user info:', error);
     if (error instanceof Error) {
-      console.error("Error details:", {
+      console.error('Error details:', {
         message: error.message,
         stack: error.stack,
         name: error.name,

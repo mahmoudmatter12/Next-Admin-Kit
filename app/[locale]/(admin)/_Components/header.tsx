@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import {
   HelpCircle,
@@ -8,8 +8,8 @@ import {
   Sun,
   Settings,
   Palette,
-} from "lucide-react";
-import { Button } from "@/components/ui/button";
+} from 'lucide-react';
+import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -21,20 +21,20 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuSubContent,
   DropdownMenuPortal,
-} from "@/components/ui/dropdown-menu";
-import { Badge } from "@/components/ui/badge";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
-import { cn } from "@/lib/utils";
-import { useUser } from "@/contexts/userContext";
-import { useParams } from "next/navigation";
-import { SignOutButton } from "@/components/auth/SignOutButton";
-import { useQueryClient } from "@tanstack/react-query";
-import { toast } from "sonner";
-import { LanguageSwitcher } from "./LanguageSwitcher";
-import { themes } from "./config/theme.config";
-import { ThemeColorPicker } from "./ThemeColorPicker";
+} from '@/components/ui/dropdown-menu';
+import { Badge } from '@/components/ui/badge';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { useTheme } from 'next-themes';
+import { useEffect, useState } from 'react';
+import { cn } from '@/lib/utils';
+import { useUser } from '@/contexts/userContext';
+import { useParams } from 'next/navigation';
+import { SignOutButton } from '@/components/auth/SignOutButton';
+import { useQueryClient } from '@tanstack/react-query';
+import { toast } from 'sonner';
+import { LanguageSwitcher } from './LanguageSwitcher';
+import { themes } from './config/theme.config';
+import { ThemeColorPicker } from './ThemeColorPicker';
 
 interface HeaderProps {
   // notifications?: {
@@ -54,7 +54,7 @@ export function Header({
   // notifications = [],
   // onNotificationClick,
   // onMarkAllAsRead,
-  searchPlaceholder = "Search...",
+  searchPlaceholder = 'Search...',
   className,
 }: HeaderProps) {
   const { theme, setTheme } = useTheme();
@@ -83,12 +83,12 @@ export function Header({
     setIsRechecking(true);
     try {
       await refetchUser();
-      toast.success("Access rechecked successfully", {
-        description: "Your permissions have been refreshed.",
+      toast.success('Access rechecked successfully', {
+        description: 'Your permissions have been refreshed.',
       });
     } catch (error) {
-      toast.error("Failed to recheck access", {
-        description: "An error occurred while refreshing your permissions.",
+      toast.error('Failed to recheck access', {
+        description: 'An error occurred while refreshing your permissions.',
       });
     } finally {
       setIsRechecking(false);
@@ -98,8 +98,8 @@ export function Header({
   return (
     <header
       className={cn(
-        "flex h-16 items-center justify-between border-b border-setup-secondary bg-setup-primary backdrop-blur supports-backdrop-filter:bg-setup-primary px-4 sm:px-6",
-        className,
+        'flex h-16 items-center justify-between border-b border-setup-secondary bg-setup-primary backdrop-blur supports-backdrop-filter:bg-setup-primary px-4 sm:px-6',
+        className
       )}
     >
       {/* Search Bar */}
@@ -137,23 +137,23 @@ export function Header({
       {/* TODO: ADD LOGO */}
 
       {/* project name and version */}
-      <div className="flex items-center space-x-1 sm:space-x-2 min-w-0 flex-1">
-        <h1 className="text-xs sm:text-sm md:text-2xl font-bold text-setup-text truncate">
-          <span className="hidden sm:inline">
-            {process.env.NEXT_PUBLIC_PROJECT_NAME || "Admin"}
+      <div className='flex items-center space-x-1 sm:space-x-2 min-w-0 flex-1'>
+        <h1 className='text-xs sm:text-sm md:text-2xl font-bold text-setup-text truncate'>
+          <span className='hidden sm:inline'>
+            {process.env.NEXT_PUBLIC_PROJECT_NAME || 'Admin'}
           </span>
-          <span className="sm:hidden">Admin</span>
+          <span className='sm:hidden'>Admin</span>
         </h1>
         {/* badge for version */}
         <Badge
-          variant="outline"
-          className="text-xs bg-setup-secondary/70 text-setup-text shrink-0 hidden sm:flex"
+          variant='outline'
+          className='text-xs bg-setup-secondary/70 text-setup-text shrink-0 hidden sm:flex'
         >
-          {process.env.NEXT_PUBLIC_VERSION || "1.0.0"}
+          {process.env.NEXT_PUBLIC_VERSION || '1.0.0'}
         </Badge>
       </div>
 
-      <div className="flex items-center space-x-2 sm:space-x-4">
+      <div className='flex items-center space-x-2 sm:space-x-4'>
         {/* Language Switcher */}
         <LanguageSwitcher />
 
@@ -161,27 +161,27 @@ export function Header({
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button
-              variant="ghost"
-              size="sm"
-              className="hidden sm:flex text-setup-text hover:text-setup-text hover:bg-setup-primary/20"
+              variant='ghost'
+              size='sm'
+              className='hidden sm:flex text-setup-text hover:text-setup-text hover:bg-setup-primary/20'
             >
               {mounted ? (
                 (() => {
-                  const currentTheme = themes.find((t) => t.id === theme);
+                  const currentTheme = themes.find(t => t.id === theme);
                   const ThemeIcon = currentTheme?.icon || Sun;
-                  return <ThemeIcon className="h-4 w-4" />;
+                  return <ThemeIcon className='h-4 w-4' />;
                 })()
               ) : (
-                <Sun className="h-4 w-4" />
+                <Sun className='h-4 w-4' />
               )}
-              <span className="sr-only">Toggle theme</span>
+              <span className='sr-only'>Toggle theme</span>
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent
-            align="end"
-            className="bg-setup-primary border-setup-secondary/30"
+            align='end'
+            className='bg-setup-primary border-setup-secondary/30'
           >
-            {themes.map((themeConfig) => {
+            {themes.map(themeConfig => {
               const ThemeIcon = themeConfig.icon;
               const isActive = theme === themeConfig.id;
               // Don't show color picker for system theme
@@ -193,34 +193,31 @@ export function Header({
                     <DropdownMenuSubTrigger
                       onClick={() => setTheme(themeConfig.id)}
                       className={cn(
-                        "text-setup-text hover:text-setup-text hover:bg-setup-secondary/20",
-                        isActive && "bg-setup-secondary/10",
+                        'text-setup-text hover:text-setup-text hover:bg-setup-secondary/20',
+                        isActive && 'bg-setup-secondary/10'
                       )}
                     >
-                      <ThemeIcon className="mr-2 h-4 w-4" />
+                      <ThemeIcon className='mr-2 h-4 w-4' />
                       {themeConfig.label}
                       {isActive && (
-                        <span className="ml-auto text-setup-secondary">✓</span>
+                        <span className='ml-auto text-setup-secondary'>✓</span>
                       )}
                     </DropdownMenuSubTrigger>
                     <DropdownMenuPortal>
-                      <DropdownMenuSubContent className="bg-setup-primary border-setup-secondary/30">
+                      <DropdownMenuSubContent className='bg-setup-primary border-setup-secondary/30'>
                         <DropdownMenuItem
                           onClick={() => setTheme(themeConfig.id)}
-                          className="text-setup-text hover:text-setup-text hover:bg-setup-secondary/20"
+                          className='text-setup-text hover:text-setup-text hover:bg-setup-secondary/20'
                         >
-                          <ThemeIcon className="mr-2 h-4 w-4" />
+                          <ThemeIcon className='mr-2 h-4 w-4' />
                           Apply {themeConfig.label}
                         </DropdownMenuItem>
-                        <DropdownMenuSeparator className="bg-setup-secondary/30" />
-                        <div
-                          className="p-2"
-                          onClick={(e) => e.stopPropagation()}
-                        >
+                        <DropdownMenuSeparator className='bg-setup-secondary/30' />
+                        <div className='p-2' onClick={e => e.stopPropagation()}>
                           <ThemeColorPicker
                             themeId={themeConfig.id}
                             themeLabel={themeConfig.label}
-                            className="w-full justify-start"
+                            className='w-full justify-start'
                           />
                         </div>
                       </DropdownMenuSubContent>
@@ -234,14 +231,14 @@ export function Header({
                   key={themeConfig.id}
                   onClick={() => setTheme(themeConfig.id)}
                   className={cn(
-                    "text-setup-text hover:text-setup-text hover:bg-setup-secondary/20",
-                    isActive && "bg-setup-secondary/10",
+                    'text-setup-text hover:text-setup-text hover:bg-setup-secondary/20',
+                    isActive && 'bg-setup-secondary/10'
                   )}
                 >
-                  <ThemeIcon className="mr-2 h-4 w-4" />
+                  <ThemeIcon className='mr-2 h-4 w-4' />
                   {themeConfig.label}
                   {isActive && (
-                    <span className="ml-auto text-setup-secondary">✓</span>
+                    <span className='ml-auto text-setup-secondary'>✓</span>
                   )}
                 </DropdownMenuItem>
               );
@@ -251,28 +248,28 @@ export function Header({
 
         {/* Recheck Admin Access */}
         <Button
-          variant="ghost"
-          size="sm"
-          className="hidden sm:flex text-setup-text hover:text-setup-text hover:bg-setup-secondary/20"
+          variant='ghost'
+          size='sm'
+          className='hidden sm:flex text-setup-text hover:text-setup-text hover:bg-setup-secondary/20'
           onClick={handleRecheckAccess}
           disabled={isRechecking}
-          title="Recheck Admin Access"
+          title='Recheck Admin Access'
         >
           <RefreshCw
-            className={`h-4 w-4 ${isRechecking ? "animate-spin" : ""}`}
+            className={`h-4 w-4 ${isRechecking ? 'animate-spin' : ''}`}
           />
-          <span className="sr-only">Recheck Admin Access</span>
+          <span className='sr-only'>Recheck Admin Access</span>
         </Button>
 
         {/* Help Center */}
         {/* TODO: GO TO DOCUMENTATION */}
         <Button
-          variant="ghost"
-          size="sm"
-          className="hidden sm:flex text-setup-text hover:text-setup-text hover:bg-setup-secondary/20"
+          variant='ghost'
+          size='sm'
+          className='hidden sm:flex text-setup-text hover:text-setup-text hover:bg-setup-secondary/20'
         >
-          <HelpCircle className="h-4 w-4" />
-          <span className="sr-only">Help</span>
+          <HelpCircle className='h-4 w-4' />
+          <span className='sr-only'>Help</span>
         </Button>
 
         {/* Message Notifications */}
@@ -359,54 +356,54 @@ export function Header({
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button
-              variant="ghost"
-              className="relative h-10 w-auto rounded-full pl-2 pr-3 space-x-2 text-setup-text hover:text-setup-text hover:bg-setup-secondary/20"
+              variant='ghost'
+              className='relative h-10 w-auto rounded-full pl-2 pr-3 space-x-2 text-setup-text hover:text-setup-text hover:bg-setup-secondary/20'
             >
-              <Avatar className="h-8 w-8">
+              <Avatar className='h-8 w-8'>
                 <AvatarImage src={user?.image} alt={user?.name} />
-                <AvatarFallback className="bg-setup-secondary text-setup-text">
+                <AvatarFallback className='bg-setup-secondary text-setup-text'>
                   {user?.name
-                    ?.split(" ")
+                    ?.split(' ')
                     .map((n: string) => n[0])
-                    .join("")}
+                    .join('')}
                 </AvatarFallback>
               </Avatar>
-              <div className="hidden sm:flex sm:items-center">
-                <div className="text-left">
-                  <p className="text-sm font-medium truncate max-w-[120px]">
+              <div className='hidden sm:flex sm:items-center'>
+                <div className='text-left'>
+                  <p className='text-sm font-medium truncate max-w-[120px]'>
                     {user?.name}
                   </p>
-                  <p className="text-xs text-setup-text/70 capitalize">
+                  <p className='text-xs text-setup-text/70 capitalize'>
                     {user?.role}
                   </p>
                 </div>
-                <ChevronDown className="ml-1 h-4 w-4 text-setup-text/70" />
+                <ChevronDown className='ml-1 h-4 w-4 text-setup-text/70' />
               </div>
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent
-            className="w-56 bg-setup-primary border-setup-secondary/30"
-            align="end"
+            className='w-56 bg-setup-primary border-setup-secondary/30'
+            align='end'
             forceMount
           >
-            <DropdownMenuLabel className="font-normal text-setup-text">
-              <div className="flex flex-col space-y-1">
-                <p className="text-sm font-medium leading-none">{user?.name}</p>
-                <p className="text-xs leading-none text-setup-text/70 truncate">
+            <DropdownMenuLabel className='font-normal text-setup-text'>
+              <div className='flex flex-col space-y-1'>
+                <p className='text-sm font-medium leading-none'>{user?.name}</p>
+                <p className='text-xs leading-none text-setup-text/70 truncate'>
                   {user?.email}
                 </p>
               </div>
             </DropdownMenuLabel>
-            <DropdownMenuSeparator className="bg-setup-secondary/30" />
+            <DropdownMenuSeparator className='bg-setup-secondary/30' />
             <DropdownMenuItem
               onClick={handleRecheckAccess}
               disabled={isRechecking}
-              className="text-setup-text hover:text-setup-text hover:bg-setup-secondary/20 disabled:opacity-50 disabled:cursor-not-allowed"
+              className='text-setup-text hover:text-setup-text hover:bg-setup-secondary/20 disabled:opacity-50 disabled:cursor-not-allowed'
             >
               <RefreshCw
-                className={`mr-2 h-4 w-4 ${isRechecking ? "animate-spin" : ""}`}
+                className={`mr-2 h-4 w-4 ${isRechecking ? 'animate-spin' : ''}`}
               />
-              {isRechecking ? "Rechecking..." : "Recheck Admin Access"}
+              {isRechecking ? 'Rechecking...' : 'Recheck Admin Access'}
             </DropdownMenuItem>
             {/* <DropdownMenuItem className='text-gray-300 hover:text-white hover:bg-gray-800'>
               <User className='mr-2 h-4 w-4' />
@@ -441,7 +438,7 @@ export function Header({
                 </DropdownMenuSubContent>
               </DropdownMenuPortal>
             </DropdownMenuSub> */}
-            <DropdownMenuSeparator className="bg-setup-secondary" />
+            <DropdownMenuSeparator className='bg-setup-secondary' />
             <SignOutButton />
           </DropdownMenuContent>
         </DropdownMenu>

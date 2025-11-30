@@ -9,7 +9,8 @@ import { useState } from 'react';
 const commands = [
   {
     label: 'Clone the repository',
-    command: 'git clone https://github.com/mahmoudmatter12/Next-Admin-Kit.git\ncd Next-Admin-Kit',
+    command:
+      'git clone https://github.com/mahmoudmatter12/Next-Admin-Kit.git\ncd Next-Admin-Kit',
   },
   {
     label: 'Install dependencies',

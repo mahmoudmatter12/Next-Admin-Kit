@@ -9,7 +9,7 @@
  * - Uncomment and modify examples to match your project
  */
 
-import type React from "react";
+import type React from 'react';
 import {
   Users,
   FileText,
@@ -21,7 +21,7 @@ import {
   AlertCircle,
   CheckCircle,
   Clock,
-} from "lucide-react";
+} from 'lucide-react';
 
 export interface AdminConfig {
   // Branding
@@ -56,9 +56,9 @@ export interface AdminConfig {
     enabled: boolean;
     title: string;
     maxItems?: number; // Limit number of quick actions shown
-    orderBy?: "default" | "alphabetical" | "custom"; // How to order items
+    orderBy?: 'default' | 'alphabetical' | 'custom'; // How to order items
     customOrder?: string[]; // Custom order if orderBy is 'custom'
-    groupBy?: "section" | "none"; // Group items by section or not
+    groupBy?: 'section' | 'none'; // Group items by section or not
   };
 
   // Stats Cards Configuration
@@ -84,8 +84,8 @@ export interface StatCardConfig {
   description?: string;
   icon: React.ComponentType<{ className?: string }>;
   href?: string; // Optional link
-  color?: "default" | "primary" | "success" | "warning" | "danger";
-  roles?: ("ADMIN" | "SUPERADMIN" | "OWNER")[]; // Role-based visibility
+  color?: 'default' | 'primary' | 'success' | 'warning' | 'danger';
+  roles?: ('ADMIN' | 'SUPERADMIN' | 'OWNER')[]; // Role-based visibility
 }
 
 // Default Configuration
@@ -93,9 +93,9 @@ export const adminConfig: AdminConfig = {
   branding: {
     // Set your project name here or use environment variable
     // For client-side access, use: typeof window !== 'undefined' ? window.location.hostname : 'Admin Panel'
-    projectName: "Admin Panel", // Change this to your project name
-    welcomeMessage: "Welcome to the Admin Panel",
-    welcomeDescription: "Manage your system efficiently from this dashboard",
+    projectName: 'Admin Panel', // Change this to your project name
+    welcomeMessage: 'Welcome to the Admin Panel',
+    welcomeDescription: 'Manage your system efficiently from this dashboard',
   },
 
   features: {
@@ -169,7 +169,7 @@ export const adminConfig: AdminConfig = {
 
   quickActions: {
     enabled: true,
-    title: "Quick Actions",
+    title: 'Quick Actions',
 
     // ============================================
     // EXAMPLE 1: No Limits (Show All)
@@ -201,7 +201,7 @@ export const adminConfig: AdminConfig = {
     // ============================================
     // EXAMPLE 5: Default Order (Navigation Order)
     // ============================================
-    orderBy: "default", // Uses order from navigation.ts
+    orderBy: 'default', // Uses order from navigation.ts
 
     // ============================================
     // EXAMPLE 6: Group by Section
@@ -211,7 +211,7 @@ export const adminConfig: AdminConfig = {
     // ============================================
     // Current Configuration
     // ============================================
-    groupBy: "none", // No grouping - flat list
+    groupBy: 'none', // No grouping - flat list
   },
 
   stats: {
@@ -372,7 +372,7 @@ export const adminConfig: AdminConfig = {
     // ============================================
     // EXAMPLE 1: Simple Welcome Message
     // ============================================
-    title: "Welcome back!",
+    title: 'Welcome back!',
     description: "Here's what's happening with your system today.",
     showUserGreeting: true, // Shows "Welcome back, [User Name]!"
 
