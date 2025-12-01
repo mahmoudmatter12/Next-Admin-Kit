@@ -42,7 +42,7 @@ export function generateMetadata(config: SEOConfig): Metadata {
 
   const siteName = process.env.NEXT_PUBLIC_PROJECT_NAME || 'next-admin-kit-nine';
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://next-admin-kit-nine.dev';
-  const defaultImage = `${siteUrl}/og-image.png`;
+  const defaultImage = `${siteUrl}/Admin_Kit_OG_Banner.png`;
   const fullUrl = url ? `${siteUrl}${url}` : siteUrl;
   const fullImage = image
     ? image.startsWith('http')
@@ -165,7 +165,7 @@ export function generateStructuredData(config: {
   };
 }) {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://next-admin-kit-nine.dev';
-  const defaultImage = `${siteUrl}/og-image.png`;
+  const defaultImage = `${siteUrl}/Admin_Kit_OG_Banner.png`;
   const defaultLogo = `${siteUrl}/logo.png`;
 
   const baseData = {
@@ -269,6 +269,6 @@ export const defaultSEO: SEOConfig = {
     'starter template',
     'boilerplate',
   ],
-  image: '/og-image.png',
+  image: '/Admin_Kit_OG_Banner.png',
   type: 'website',
 };

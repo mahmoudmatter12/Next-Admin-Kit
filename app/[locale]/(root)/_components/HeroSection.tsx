@@ -2,138 +2,161 @@
 
 import { useTranslations } from 'next-intl';
 import { Button } from '@/components/ui/button';
-import {
-  ArrowDown,
-  Github,
-  BookOpen,
-  Rocket,
-  Sparkles,
-  CheckCircle2,
-} from 'lucide-react';
+import { Github, BookOpen, Rocket, ArrowRight, ExternalLink } from 'lucide-react';
 import { useRouter } from '@/i18n/navigation';
 import { motion } from 'framer-motion';
+import { useParams } from 'next/navigation';
+import Image from 'next/image';
 import { cn } from '@/lib/utils';
 
 export function HeroSection() {
   const t = useTranslations('landing.hero');
   const router = useRouter();
-
-  const scrollToSetup = () => {
-    const setupSection = document.getElementById('setup-guide');
-    if (setupSection) {
-      setupSection.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+  const params = useParams();
+  const locale = (params?.locale as string) || 'en';
+  const isRTL = locale === 'ar';
 
   return (
-    <section className='relative min-h-screen flex items-center justify-center overflow-hidden bg-setup-primary'>
-      {/* Animated background elements */}
-      <div className='absolute inset-0 overflow-hidden opacity-10 pointer-events-none'>
-        <motion.div
-          className='absolute -left-[20%] -top-[20%] h-[60%] w-[60%] rounded-full bg-setup-secondary/20 blur-3xl'
-          animate={{
-            x: [0, 50, 0],
-            y: [0, 30, 0],
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: 'easeInOut',
-          }}
+    <section className='relative min-h-screen flex items-center justify-center overflow-hidden'>
+      {/* Background Image */}
+      <div className='absolute inset-0 z-0'>
+        <Image
+          src='/Admin_Kit_OG_Banner.png'
+          alt='Next-Admin-Kit Banner'
+          fill
+          className='object-cover'
+          priority
+          unoptimized
         />
-        <motion.div
-          className='absolute -right-[20%] -bottom-[20%] h-[60%] w-[60%] rounded-full bg-setup-secondary/20 blur-3xl'
-          animate={{
-            x: [0, -50, 0],
-            y: [0, -30, 0],
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: 'easeInOut',
-          }}
-        />
+        {/* Overlay for better text readability */}
+        <div className='absolute inset-0 bg-black/20' />
       </div>
 
-      {/* Grid pattern overlay */}
-      <div className='absolute inset-0 opacity-5 pointer-events-none'>
-        <div className='h-full w-full bg-[linear-gradient(to_right,rgba(255,255,255,0.1)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[size:40px_40px]' />
-      </div>
-
-      {/* Main content */}
-      <div className='relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-20'>
-        <div className='max-w-4xl mx-auto text-center'>
+      {/* CTA Buttons - Bottom Right with Blurred Background */}
+      <div className='absolute bottom-0 z-10 w-full px-4 sm:px-6 lg:px-8 pb-8 lg:pb-12'>
+        <div className={cn(
+          'flex justify-end',
+          isRTL && 'justify-start'
+        )}>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className={cn(
+              'relative backdrop-blur-md bg-black/30 border border-white/20 rounded-2xl p-6 shadow-2xl',
+              'flex flex-col gap-4',
+              'w-full sm:w-auto'
+            )}
           >
-            <div className='flex items-center justify-center gap-3 mb-6'>
-              <Sparkles className='h-8 w-8 sm:h-10 sm:w-10 text-setup-secondary' />
-              <h1 className='text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-setup-text'>
-                {t('title')}
-              </h1>
-            </div>
-            <p className='text-xl sm:text-2xl md:text-3xl text-setup-text/80 mb-4'>
-              {t('subtitle')}
-            </p>
-            <p className='text-base sm:text-lg md:text-xl text-setup-text/70 mb-8 max-w-2xl mx-auto'>
-              {t('description')}
-            </p>
+            {/* Get Started Button */}
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className='relative w-full sm:w-auto'
+            >
+              <Button
+                onClick={() => router.push('/setup')}
+                size='lg'
+                className='group relative bg-setup-secondary hover:bg-setup-secondary/90 text-white px-8 py-6 text-lg w-full sm:w-auto shadow-lg overflow-hidden transition-all duration-300'
+              >
+                {/* Shine effect */}
+                <motion.div
+                  className='absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent'
+                  initial={{ x: '-100%' }}
+                  whileHover={{ x: '100%' }}
+                  transition={{ duration: 0.6, repeat: Infinity, repeatDelay: 2 }}
+                />
+                <div className='relative flex items-center gap-2'>
+                  <Rocket className='h-5 w-5 transition-transform group-hover:rotate-12' />
+                  <span>{t('get_started')}</span>
+                  <motion.div
+                    initial={{ x: 0, opacity: 0 }}
+                    whileHover={{ x: isRTL ? -4 : 4, opacity: 1 }}
+                    transition={{ duration: 0.2 }}
+                    className='flex items-center'
+                  >
+                    <ArrowRight
+                      className={cn('h-5 w-5', isRTL && 'rotate-180')}
+                    />
+                  </motion.div>
+                </div>
+              </Button>
+            </motion.div>
 
-            {/* Quick highlights */}
-            <div className='flex flex-wrap items-center justify-center gap-4 mb-12 text-sm sm:text-base'>
-              <div className='flex items-center gap-2 text-setup-text/80'>
-                <CheckCircle2 className='h-5 w-5 text-setup-secondary' />
-                <span>Ready to Use</span>
-              </div>
-              <div className='flex items-center gap-2 text-setup-text/80'>
-                <CheckCircle2 className='h-5 w-5 text-setup-secondary' />
-                <span>Fully Documented</span>
-              </div>
-              <div className='flex items-center gap-2 text-setup-text/80'>
-                <CheckCircle2 className='h-5 w-5 text-setup-secondary' />
-                <span>Production Ready</span>
-              </div>
-            </div>
-          </motion.div>
+            {/* GitHub Button */}
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className='relative w-full sm:w-auto'
+            >
+              <Button
+                onClick={() => {
+                  const githubUrl = process.env.NEXT_PUBLIC_DEVELOPER_URL || '#';
+                  window.open(githubUrl, '_blank');
+                }}
+                variant='outline'
+                size='lg'
+                className='group relative border-white/30 bg-white/10 backdrop-blur-sm text-white hover:bg-white/20 hover:border-white/50 px-8 py-6 text-lg w-full sm:w-auto shadow-lg transition-all duration-300 overflow-hidden'
+              >
+                {/* Pulse indicator */}
+                <motion.div
+                  className='absolute inset-0 border-2 border-white/50 rounded-md'
+                  initial={{ scale: 1, opacity: 0.5 }}
+                  animate={{ scale: 1.1, opacity: 0 }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                />
+                <div className='relative flex items-center gap-2'>
+                  <Github className='h-5 w-5 transition-transform group-hover:scale-110' />
+                  <span>{t('github')}</span>
+                  <motion.div
+                    initial={{ x: 0, opacity: 0 }}
+                    whileHover={{ x: isRTL ? -4 : 4, opacity: 1 }}
+                    transition={{ duration: 0.2 }}
+                    className='flex items-center'
+                  >
+                    <ExternalLink
+                      className={cn('h-4 w-4', isRTL && 'rotate-180')}
+                    />
+                  </motion.div>
+                </div>
+              </Button>
+            </motion.div>
 
-          {/* CTA Buttons */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className='flex flex-col sm:flex-row gap-4 justify-center items-center'
-          >
-            <Button
-              onClick={() => router.push('/setup')}
-              size='lg'
-              className='bg-setup-secondary hover:bg-setup-secondary/80 text-white px-8 py-6 text-lg'
+            {/* Documentation Button */}
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className='relative w-full sm:w-auto'
             >
-              <Rocket className='mr-2 h-5 w-5' />
-              {t('get_started')}
-            </Button>
-            <Button
-              onClick={() => {
-                const githubUrl = process.env.NEXT_PUBLIC_DEVELOPER_URL || '#';
-                window.open(githubUrl, '_blank');
-              }}
-              variant='outline'
-              size='lg'
-              className='border-setup-secondary/30 text-setup-text hover:bg-setup-secondary/20 px-8 py-6 text-lg'
-            >
-              <Github className='mr-2 h-5 w-5' />
-              {t('github')}
-            </Button>
-            <Button
-              onClick={() => router.push('/docs')}
-              variant='outline'
-              size='lg'
-              className='text-setup-text hover:bg-setup-secondary/20 px-8 py-6 text-lg'
-            >
-              <BookOpen className='mr-2 h-5 w-5' />
-              {t('view_documentation')}
-            </Button>
+              <Button
+                onClick={() => router.push('/docs')}
+                variant='outline'
+                size='lg'
+                className='group relative border-white/30 bg-white/10 backdrop-blur-sm text-white hover:bg-white/20 hover:border-white/50 px-8 py-6 text-lg w-full sm:w-auto shadow-lg transition-all duration-300 overflow-hidden'
+              >
+                {/* Glow effect */}
+                <motion.div
+                  className='absolute inset-0 bg-white/10 blur-xl'
+                  initial={{ opacity: 0 }}
+                  whileHover={{ opacity: 1 }}
+                  transition={{ duration: 0.3 }}
+                />
+                <div className='relative flex items-center gap-2'>
+                  <BookOpen className='h-5 w-5 transition-transform group-hover:rotate-3' />
+                  <span>{t('view_documentation')}</span>
+                  <motion.div
+                    initial={{ x: 0, opacity: 0 }}
+                    whileHover={{ x: isRTL ? -4 : 4, opacity: 1 }}
+                    transition={{ duration: 0.2 }}
+                    className='flex items-center'
+                  >
+                    <ArrowRight
+                      className={cn('h-5 w-5', isRTL && 'rotate-180')}
+                    />
+                  </motion.div>
+                </div>
+              </Button>
+            </motion.div>
           </motion.div>
         </div>
       </div>

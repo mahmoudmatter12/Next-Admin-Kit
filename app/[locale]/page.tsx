@@ -35,7 +35,7 @@ export async function generateMetadata({
       'react admin',
       'full stack admin',
     ],
-    image: '/og-image.png',
+    image: '/Admin_Kit_OG_Banner.png',
     url: `/${locale}`,
     type: 'website',
     locale: locale,
@@ -62,7 +62,7 @@ export default async function HomePage({
     description:
       'Full-stack admin panel starter with Next.js, Prisma, Clerk, RBAC, Themes & i18n',
     url: `${siteUrl}/${locale}`,
-    image: `${siteUrl}/og-image.png`,
+    image: `${siteUrl}/Admin_Kit_OG_Banner.png`,
     logo: `${siteUrl}/logo.png`,
     applicationCategory: 'DeveloperApplication',
     operatingSystem: 'Web',
